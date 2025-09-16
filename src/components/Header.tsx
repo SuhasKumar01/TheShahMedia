@@ -93,7 +93,7 @@ const Header: React.FC = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="ml-2 text-lg font-semibold text-[#F1F1F1] font-inter">
+              <span className="ml-2 text-lg font-semibold text-gray-900 font-inter">
                 Shah Media
               </span>
             </Link>
@@ -108,7 +108,7 @@ const Header: React.FC = () => {
                     onMouseEnter={() => setActiveDropdown(item.name)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <button className="flex items-center px-3 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200 font-medium">
+                    <button className="flex items-center px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium">
                       {item.name}
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
@@ -120,14 +120,14 @@ const Header: React.FC = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-56 bg-[#36454f] border border-[#b9b2aa]/20 rounded-lg shadow-xl backdrop-blur-xl"
+                          className="absolute top-full left-0 mt-2 w-56 bg-white/95 border border-gray-200/50 rounded-xl shadow-xl backdrop-blur-xl"
                         >
                           <div className="py-2">
                             {item.dropdownItems?.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.name}
                                 href={dropdownItem.href}
-                                className="block px-4 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] hover:bg-[#b9b2aa]/10 transition-colors duration-200"
+                                className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50/50 transition-colors duration-200"
                               >
                                 {dropdownItem.name}
                               </Link>
@@ -140,7 +140,7 @@ const Header: React.FC = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className="px-3 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200 font-medium"
+                    className="px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
                   >
                     {item.name}
                   </Link>
@@ -152,21 +152,21 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-4">
             <Link
               href="#login"
-              className="hidden lg:inline-flex text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200 font-medium"
+              className="hidden lg:inline-flex text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
             >
               Log in
             </Link>
 
             <Link
               href="#contact"
-              className="hidden lg:inline-flex px-4 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] border border-[#b9b2aa]/30 hover:border-[#b9b2aa]/50 rounded-lg transition-colors duration-200 font-medium"
+              className="hidden lg:inline-flex px-4 py-2 text-gray-600 hover:text-gray-900 border border-gray-300/50 hover:border-gray-300 rounded-lg transition-colors duration-200 font-medium"
             >
               Talk to sales
             </Link>
 
             <Button
               asChild
-              className="hidden lg:inline-flex bg-[#007BFF] hover:bg-[#0056b3] text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200"
+              className="hidden lg:inline-flex bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200"
             >
               <Link href="#signup">
                 Try for free
@@ -175,7 +175,7 @@ const Header: React.FC = () => {
 
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200"
+              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -194,7 +194,7 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-[#b9b2aa]/20 mt-4 overflow-hidden"
+              className="lg:hidden border-t border-gray-200/30 mt-4 overflow-hidden"
             >
               <div className="py-4 space-y-2">
                 {navItems.map((item) => (
@@ -203,7 +203,7 @@ const Header: React.FC = () => {
                       <div>
                         <button
                           onClick={() => handleDropdownToggle(item.name)}
-                          className="flex items-center justify-between w-full px-4 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200 font-medium"
+                          className="flex items-center justify-between w-full px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
                         >
                           {item.name}
                           <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
