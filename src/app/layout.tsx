@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
-import FloatingDock from "@/components/FloatingDock";
 import EnhancedAiChatAssistant from "@/components/EnhancedAiChatAssistant";
 import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
@@ -110,7 +109,6 @@ export default function RootLayout({
           <LoadingProvider>
             <Header />
             <ClientLayoutWrapper>
-              <FloatingDock />
               <EnhancedAiChatAssistant />
               <main id="main-content">{children}</main>
               <Footer />
