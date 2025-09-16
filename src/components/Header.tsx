@@ -223,7 +223,7 @@ const Header: React.FC = () => {
                                 <Link
                                   key={dropdownItem.name}
                                   href={dropdownItem.href}
-                                  className="block px-4 py-2 text-[#F1F1F1]/70 hover:text-[#F1F1F1] transition-colors duration-200"
+                                  className="block px-4 py-2 text-gray-500 hover:text-gray-800 transition-colors duration-200"
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                   {dropdownItem.name}
@@ -236,7 +236,7 @@ const Header: React.FC = () => {
                     ) : (
                       <Link
                         href={item.href}
-                        className="block px-4 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200 font-medium"
+                        className="block px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -245,24 +245,24 @@ const Header: React.FC = () => {
                   </div>
                 ))}
                 
-                <div className="pt-4 space-y-2 border-t border-[#b9b2aa]/20">
+                <div className="pt-4 space-y-2 border-t border-gray-200/30">
                   <Link
                     href="#login"
-                    className="block px-4 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200 font-medium"
+                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Log in
                   </Link>
                   <Link
                     href="#contact"
-                    className="block px-4 py-2 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-colors duration-200 font-medium"
+                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Talk to sales
                   </Link>
                   <Button
                     asChild
-                    className="w-full bg-[#007BFF] hover:bg-[#0056b3] text-white font-medium rounded-lg"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg"
                   >
                     <Link 
                       href="#signup"
@@ -277,6 +277,7 @@ const Header: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
+    </div>
     </motion.header>
   );
 };
