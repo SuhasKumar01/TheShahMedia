@@ -65,17 +65,18 @@ const Header: React.FC = () => {
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
-        isScrolled 
-          ? "bg-[#36454f]/95 backdrop-blur-xl border-b border-[#b9b2aa]/20" 
-          : "bg-[#36454f]/90 backdrop-blur-xl"
-      }`}
+      className="fixed top-4 left-4 right-4 z-[60] transition-all duration-300"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className={`${
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-xl border border-gray-200/50 shadow-lg" 
+          : "bg-white/90 backdrop-blur-md border border-gray-200/30"
+      } rounded-2xl transition-all duration-300`}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
           <motion.div 
             className="flex-shrink-0"
             whileHover={{ scale: 1.05 }}
