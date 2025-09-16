@@ -15,7 +15,7 @@ export default function Home() {
   const [selectedInvestment, setSelectedInvestment] = useState<string>("growth");
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
     {/* Hero Section with Enhanced Hero Component */}
       <section className="relative min-h-screen bg-[#36454f] overflow-hidden pt-20">
         <EnhancedHero />

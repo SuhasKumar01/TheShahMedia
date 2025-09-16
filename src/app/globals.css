@@ -130,11 +130,53 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  /* Hide scroll bars while maintaining scroll functionality */
+  html {
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  html::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
   body {
     @apply bg-background text-foreground;
     background: var(--premium-gradient-primary);
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  /* Hide scroll bars for all elements */
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  *::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  /* Ensure no horizontal overflow anywhere */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  #__next {
+    overflow-x: hidden;
+  }
+  
+  main {
+    overflow-x: hidden;
   }
   
   /* Premium background overlay for enhanced depth */
@@ -1247,7 +1289,35 @@ html {
   .brand-follow {
     font-size: 13px;
   }
-  
+}
+
+/* Utility classes for hiding scroll bars */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Ensure no scroll bars appear anywhere */
+.no-scrollbars, .no-scrollbars * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.no-scrollbars::-webkit-scrollbar, 
+.no-scrollbars *::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Additional scroll bar prevention */
+html, body {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
   .brand-features-container {
     max-height: 120px;
   }
