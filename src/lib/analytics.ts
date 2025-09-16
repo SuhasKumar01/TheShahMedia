@@ -132,7 +132,12 @@ class Analytics {
   private getSessionId(): string {
     let sessionId = sessionStorage.getItem('shah_media_session_id');
     if (!sessionId) {
-      sessionId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+      // Use crypto.getRandomValues for secure randomness
+      const randomArray = new Uint8Array(16); // 128 bits of random data
+      window.crypto.getRandomValues(randomArray);
+      // Convert to base36 string for compactness
+      const randomStr = Array.from(randomArray).map(b => b.toString(36)).join('');
+      sessionId = Date.now().toString(36) + randomStr;
       sessionStorage.setItem('shah_media_session_id', sessionId);
     }
     return sessionId;
