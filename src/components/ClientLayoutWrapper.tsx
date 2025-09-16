@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import { useLoading } from "@/contexts/LoadingContext";
-import { useTheme } from "@/contexts/ThemeContext";
 
 interface ClientLayoutWrapperProps {
   children: React.ReactNode;
@@ -12,7 +11,6 @@ interface ClientLayoutWrapperProps {
 
 export function ClientLayoutWrapper({ children }: ClientLayoutWrapperProps) {
   const { isLoading, hasLoadedOnce, setIsLoading } = useLoading();
-  const { theme } = useTheme();
   const [showLoading, setShowLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
 
@@ -33,9 +31,7 @@ export function ClientLayoutWrapper({ children }: ClientLayoutWrapperProps) {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-1000 ${
-      theme === 'dark' ? 'bg-[var(--bg-primary)]' : 'bg-white'
-    }`}>
+    <div className="min-h-screen transition-colors duration-1000 bg-[var(--bg-primary)]">
       <AnimatePresence mode="wait">
         {showLoading && isLoading && (
           <LoadingScreen onComplete={handleLoadingComplete} />

@@ -161,7 +161,7 @@ function PillarContent({ pillar }: { pillar: number }) {
   return (
     <div className="relative overflow-hidden">
       {/* Outskill theme gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#F1F1F1] via-[#b9b2aa] to-[#F1F1F1] dark:from-[#36454f] dark:via-[#2a3138] dark:to-[#36454f]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#36454f] via-[#2a3138] to-[#36454f]" />
       
       {/* Content */}
       <div className="relative z-10 p-8 md:p-12">
@@ -185,7 +185,7 @@ function PillarContent({ pillar }: { pillar: number }) {
         
         {/* Headline */}
         <div className="mb-8">
-          <h4 className="text-2xl md:text-3xl font-bold text-[#36454f] dark:text-[#F1F1F1] mb-4 leading-tight">
+          <h4 className="text-2xl md:text-3xl font-bold text-[#F1F1F1] mb-4 leading-tight">
             {pillarData.headline}
           </h4>
           
@@ -195,7 +195,7 @@ function PillarContent({ pillar }: { pillar: number }) {
         
         {/* Description */}
         <div className="mb-10">
-          <p className="text-lg md:text-xl text-[#36454f] dark:text-[#b9b2aa] leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-[#b9b2aa] leading-relaxed font-light">
             {pillarData.description}
           </p>
         </div>
@@ -203,58 +203,58 @@ function PillarContent({ pillar }: { pillar: number }) {
         {/* Benefits & Implementation Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="group">
-            <div className="bg-[#F1F1F1]/80 dark:bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 dark:border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
               <div className="flex items-center mb-6">
                 <div className="w-10 h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-xl flex items-center justify-center mr-4">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
-                <h5 className="text-xl font-bold text-[#36454f] dark:text-[#F1F1F1]">Key Benefits</h5>
+                <h5 className="text-xl font-bold text-[#F1F1F1]">Key Benefits</h5>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Strategic market positioning</span>
+                  <span className="text-[#b9b2aa] font-medium">Strategic market positioning</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Increased conversion rates</span>
+                  <span className="text-[#b9b2aa] font-medium">Increased conversion rates</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Premium pricing capability</span>
+                  <span className="text-[#b9b2aa] font-medium">Premium pricing capability</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Streamlined operations</span>
+                  <span className="text-[#b9b2aa] font-medium">Streamlined operations</span>
                 </li>
               </ul>
             </div>
           </div>
           
           <div className="group">
-            <div className="bg-[#F1F1F1]/80 dark:bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 dark:border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
               <div className="flex items-center mb-6">
                 <div className="w-10 h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-xl flex items-center justify-center mr-4">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
-                <h5 className="text-xl font-bold text-[#36454f] dark:text-[#F1F1F1]">Implementation</h5>
+                <h5 className="text-xl font-bold text-[#F1F1F1]">Implementation</h5>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 1-2: Discovery & Strategy</span>
+                  <span className="text-[#b9b2aa] font-medium">Week 1-2: Discovery & Strategy</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 3-4: Development</span>
+                  <span className="text-[#b9b2aa] font-medium">Week 3-4: Development</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 5-6: Testing & Launch</span>
+                  <span className="text-[#b9b2aa] font-medium">Week 5-6: Testing & Launch</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 7-8: Optimization</span>
+                  <span className="text-[#b9b2aa] font-medium">Week 7-8: Optimization</span>
                 </li>
               </ul>
             </div>
@@ -350,15 +350,15 @@ export function Card({ card, layout = false }: CardProps) {
               transition={{ duration: 0.3, ease: "easeOut" }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-6xl mx-auto bg-[#F1F1F1]/95 dark:bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] my-10 p-2 rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 dark:border-[#b9b2aa]/20"
+              className="max-w-6xl mx-auto bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] my-10 p-2 rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20"
             >
               {/* Close button with premium styling */}
               <button
-                className="sticky top-6 h-10 w-10 right-6 ml-auto bg-gradient-to-r from-[#36454f] to-[#2a3138] dark:from-[#F1F1F1] dark:to-[#b9b2aa] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
+                className="sticky top-6 h-10 w-10 right-6 ml-auto bg-gradient-to-r from-[#F1F1F1] to-[#b9b2aa] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
                 onClick={() => setOpen(false)}
                 aria-label="Close modal"
               >
-                <X className="h-5 w-5 text-[#F1F1F1] dark:text-[#36454f]" />
+                <X className="h-5 w-5 text-[#36454f]" />
               </button>
               
               {/* Header section with premium gradient */}
@@ -371,7 +371,7 @@ export function Card({ card, layout = false }: CardProps) {
                 </motion.p>
                 <motion.p
                   layoutId={layout ? `title-${card.title}` : undefined}
-                  className="text-3xl md:text-6xl font-bold text-[#36454f] dark:text-[#F1F1F1] mt-2 leading-tight"
+                  className="text-3xl md:text-6xl font-bold text-[#F1F1F1] mt-2 leading-tight"
                 >
                   {card.title}
                 </motion.p>
@@ -388,7 +388,7 @@ export function Card({ card, layout = false }: CardProps) {
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={() => setOpen(true)}
-        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="rounded-3xl bg-[#36454f] h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -490,20 +490,20 @@ export function Carousel({
       </div>
       <div className="flex justify-end gap-2 mr-10">
         <button
-          className="relative z-40 h-10 w-10 rounded-full bg-gray-100 dark:bg-neutral-900 flex items-center justify-center disabled:opacity-50"
+          className="relative z-40 h-10 w-10 rounded-full bg-[#36454f] flex items-center justify-center disabled:opacity-50"
           onClick={scrollLeft}
           disabled={!canScrollLeft}
           aria-label="Scroll left"
         >
-          <ChevronLeft className="h-6 w-6 text-gray-500" />
+          <ChevronLeft className="h-6 w-6 text-[#F1F1F1]" />
         </button>
         <button
-          className="relative z-40 h-10 w-10 rounded-full bg-gray-100 dark:bg-neutral-900 flex items-center justify-center disabled:opacity-50"
+          className="relative z-40 h-10 w-10 rounded-full bg-[#36454f] flex items-center justify-center disabled:opacity-50"
           onClick={scrollRight}
           disabled={!canScrollRight}
           aria-label="Scroll right"
         >
-          <ChevronRight className="h-6 w-6 text-gray-500" />
+          <ChevronRight className="h-6 w-6 text-[#F1F1F1]" />
         </button>
       </div>
     </div>
@@ -517,7 +517,7 @@ export function AppleCardsCarousel() {
 
   return (
     <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-[#F1F1F1] font-sans">
         Get to know your 9-Pillar System.
       </h2>
       <Carousel items={cards} />

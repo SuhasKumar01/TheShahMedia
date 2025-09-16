@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Users, Target, Star, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLoading } from "@/contexts/LoadingContext";
-import DarkModeToggle from "@/components/DarkModeToggle";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -133,17 +132,6 @@ const Header: React.FC = () => {
                 Mon-Sat
               </span>
             </motion.div>
-
-            {/* Dark Mode Toggle */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, duration: 0.3 }}
-              className="flex items-center justify-center"
-            >
-              <DarkModeToggle />
-            </motion.div>
-
             {/* Primary CTA Button */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -206,9 +194,9 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-[#b9b2aa]/30 dark:border-[#b9b2aa]/30 mt-4 overflow-hidden"
+              className="lg:hidden border-t border-[#b9b2aa]/30 mt-4 overflow-hidden"
             >
-              <div className="py-6 space-y-2 bg-[#b9b2aa]/30 dark:bg-[#b9b2aa]/30 backdrop-blur-xl rounded-2xl mt-4 border border-[#b9b2aa]/40 dark:border-[#b9b2aa]/40">
+              <div className="py-6 space-y-2 bg-[#b9b2aa]/30 backdrop-blur-xl rounded-2xl mt-4 border border-[#b9b2aa]/40">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
@@ -218,7 +206,7 @@ const Header: React.FC = () => {
                   >
                     <Link
                       href={item.href}
-                      className="flex items-center px-6 py-3 text-[#F1F1F1]/90 dark:text-[#F1F1F1]/90 hover:text-[#F1F1F1] dark:hover:text-[#F1F1F1] hover:bg-[#36454f]/40 dark:hover:bg-[#36454f]/40 transition-all duration-300 rounded-xl font-medium"
+                      className="flex items-center px-6 py-3 text-[#F1F1F1]/90 hover:text-[#F1F1F1] hover:bg-[#36454f]/40 transition-all duration-300 rounded-xl font-medium"
                       onClick={() => setIsMobileMenuOpen(false)}
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >

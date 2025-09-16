@@ -1,16 +1,16 @@
 'use client';
 
-import React from 'react';
-import { ThemeProvider } from '@/hooks/useTheme';
+import React, { useEffect } from 'react';
 
 interface ClientThemeWrapperProps {
   children: React.ReactNode;
 }
 
 export default function ClientThemeWrapper({ children }: ClientThemeWrapperProps) {
-  return (
-    <ThemeProvider>
-      {children}
-    </ThemeProvider>
-  );
+  useEffect(() => {
+    // Always apply dark mode
+    document.documentElement.classList.add('dark');
+  }, []);
+
+  return <>{children}</>;
 }

@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { useTheme } from "@/contexts/ThemeContext";
 
 interface LoadingScreenProps {
   onComplete?: () => void;
@@ -12,7 +11,6 @@ interface LoadingScreenProps {
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [counter, setCounter] = useState(0);
-  const { theme } = useTheme();
 
   // Lusion-style counter animation
   useEffect(() => {
@@ -47,14 +45,12 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-colors duration-1000 ${
-            theme === 'dark' ? 'bg-[#0a0a0a]' : 'bg-black'
-          }`}
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-colors duration-1000 bg-[#0a0a0a]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
-            backgroundColor: theme === 'dark' ? '#0a0a0a' : '#ffffff',
+            backgroundColor: '#0a0a0a',
             transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
           }}
           transition={{ duration: 0.8 }}

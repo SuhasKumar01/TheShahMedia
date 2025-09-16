@@ -4,7 +4,6 @@ import { useState } from "react"
 import { motion, useInView } from "motion/react"
 import { useRef } from "react"
 import { Building2, Target, Bot, TrendingUp, Users, Zap, Shield, Award, ArrowUpRight, Sparkles } from "lucide-react"
-import { useTheme } from "@/contexts/ThemeContext"
 
 interface BentoCard {
   id: string
@@ -100,7 +99,6 @@ const bentoCards: BentoCard[] = [
 
 export default function PremiumBentoGrid() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
-  const { theme } = useTheme()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
@@ -122,11 +120,7 @@ export default function PremiumBentoGrid() {
   return (
     <section 
       ref={ref}
-      className={`py-20 transition-colors duration-1000 ${
-        theme === 'dark' 
-          ? 'bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900' 
-          : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
-      }`}
+      className="py-20 transition-colors duration-1000 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -136,12 +130,12 @@ export default function PremiumBentoGrid() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 mb-6">
-            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-            <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Complete Growth Ecosystem</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-900/30 to-blue-900/30 mb-6">
+            <Sparkles className="w-4 h-4 text-purple-400" />
+            <span className="text-sm font-medium text-purple-300">Complete Growth Ecosystem</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Everything You Need to
             <br />
             <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -149,7 +143,7 @@ export default function PremiumBentoGrid() {
             </span>
           </h2>
           
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Every component works in perfect harmony to create an unstoppable growth engine for your business
           </p>
         </motion.div>
@@ -172,15 +166,11 @@ export default function PremiumBentoGrid() {
             >
               <div className="relative h-full overflow-hidden rounded-3xl p-6 transition-all duration-700 hover:scale-[1.02]">
                 {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${
-                  theme === 'dark' ? card.darkGradient : card.gradient
-                } opacity-90`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${card.darkGradient} opacity-90`} />
                 
                 {/* Animated Gradient Overlay */}
                 <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${
-                    theme === 'dark' ? card.darkGradient : card.gradient
-                  } opacity-0`}
+                  className={`absolute inset-0 bg-gradient-to-br ${card.darkGradient} opacity-0`}
                   animate={{
                     opacity: hoveredCard === card.id ? 0.3 : 0,
                     scale: hoveredCard === card.id ? 1.1 : 1,
@@ -316,29 +306,17 @@ export default function PremiumBentoGrid() {
           transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mt-20"
         >
-          <div className={`relative overflow-hidden rounded-3xl p-8 border ${
-            theme === 'dark' 
-              ? 'bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm border-neutral-700/50' 
-              : 'bg-gradient-to-br from-white/80 to-gray-50/80 backdrop-blur-sm border-gray-200/50'
-          }`}>
+          <div className="relative overflow-hidden rounded-3xl p-8 border bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 backdrop-blur-sm border-neutral-700/50">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
-              <div className={`absolute inset-0 ${
-                theme === 'dark' 
-                  ? 'bg-[radial-gradient(circle_at_50%_50%,white_1px,transparent_1px)]' 
-                  : 'bg-[radial-gradient(circle_at_50%_50%,black_1px,transparent_1px)]'
-              } bg-[20px_20px]`} />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,white_1px,transparent_1px)] bg-[20px_20px]" />
             </div>
 
             <div className="relative z-10">
-              <h3 className={`text-3xl font-bold mb-4 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h3 className="text-3xl font-bold mb-4 text-white">
                 Ready to Experience the Complete System?
               </h3>
-              <p className={`text-lg mb-8 max-w-2xl mx-auto ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-              }`}>
+              <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-300">
                 See how all these components work together to create predictable, scalable growth for your business
               </p>
               
