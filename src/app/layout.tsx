@@ -81,7 +81,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        {/* Apple touch icon for iOS home screen - required as link element */}
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         {/* Theme-color meta tags - Progressive enhancement for supported browsers */}
         {/* Works in Chrome, Safari, Edge; gracefully ignored by Firefox/Opera */}
