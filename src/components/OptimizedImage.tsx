@@ -57,7 +57,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     ...(!fill && width && height && { width, height }),
   };
 
-  return <Image {...imageProps} />;
+  return <Image {...imageProps} alt={alt} />;
 };
 
 export default OptimizedImage;

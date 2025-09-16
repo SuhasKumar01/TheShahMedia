@@ -51,7 +51,7 @@ export function ClientShowcase() {
               Meet Our Master Craftsmen
             </h2>
             <p className="font-inter text-xl text-[#666666] leading-relaxed">
-              See how Shivamogga's leading designers, architects, and builders transformed their businesses 
+              See how Shivamogga&apos;s leading designers, architects, and builders transformed their businesses 
               with our Local Growth Engine
             </p>
           </div>

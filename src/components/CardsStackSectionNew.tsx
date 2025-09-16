@@ -41,7 +41,7 @@ const CardsStackSection = () => {
             <span className="text-indigo-500">customer acquisition</span> system
           </h2>
           <p className="max-w-prose text-sm">
-            We don't just run ads or build websites. We install a complete, end-to-end customer acquisition system that transforms unpredictable referrals into a steady stream of qualified prospects ready to invest in quality work.
+            We don&apos;t just run ads or build websites. We install a complete, end-to-end customer acquisition system that transforms unpredictable referrals into a steady stream of qualified prospects ready to invest in quality work.
           </p>
         </div>
         <ContainerScroll className="min-h-[400vh] space-y-8 py-12">

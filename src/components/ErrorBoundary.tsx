@@ -26,9 +26,9 @@ export default class ErrorBoundary extends Component<Props, State> {
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
     
-    // Send error to analytics if available
-    if (typeof window !== 'undefined' && (window as any).analytics) {
-      (window as any).analytics.track('error_boundary_triggered', {
+    // Send error to analytics if available  
+    if (typeof window !== 'undefined' && window.analytics) {
+      window.analytics.track('error_boundary_triggered', {
         error: error.message,
         stack: error.stack,
         errorInfo
@@ -59,7 +59,7 @@ export default class ErrorBoundary extends Component<Props, State> {
             </h1>
             
             <p className="text-gray-600 mb-6">
-              We're sorry for the inconvenience. Our team has been notified and is working on a fix.
+              We&apos;re sorry for the inconvenience. Our team has been notified and is working on a fix.
             </p>
             
             <button

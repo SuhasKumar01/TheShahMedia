@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, X, Diamond, Building2, Camera, Bot, BookOpen, PenTool, Rocket, TrendingUp, Handshake, Sparkles, Zap, Target, Settings } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Diamond, Building2, Camera, Bot, BookOpen, PenTool, Rocket, TrendingUp, Handshake, Sparkles, Zap, Target } from "lucide-react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import Image from "next/image";
 

@@ -102,7 +102,7 @@ export default function EnhancedHero() {
           >
             <Sparkles className="h-4 w-4 text-[#007BFF] mr-2" />
             <span className="text-sm font-medium text-[#007BFF]">
-              Exclusive to Shivamogga's Master Craftsmen
+              Exclusive to Shivamogga&apos;s Master Craftsmen
             </span>
           </motion.div>
         </motion.div>

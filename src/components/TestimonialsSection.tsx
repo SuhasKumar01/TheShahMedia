@@ -78,7 +78,7 @@ export default function TestimonialsSection() {
         <AnimatedSection animation="fadeInUp" className="text-center mb-16">
           <div>
             <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-[#111111] mb-6">
-              Success Stories from Shivamogga's Master Craftsmen
+              Success Stories from Shivamogga&apos;s Master Craftsmen
             </h2>
             <p className="font-inter text-lg text-[#666666] max-w-3xl mx-auto">
               Real results from local professionals who transformed their businesses with our Local Growth Engine
@@ -104,7 +104,7 @@ export default function TestimonialsSection() {
 
               {/* Testimonial Content */}
               <blockquote className="font-inter text-lg text-[#111111] leading-relaxed mb-6 relative">
-                "{currentTest.content}"
+                &ldquo;{currentTest.content}&rdquo;
               </blockquote>
 
               {/* Result Highlight */}

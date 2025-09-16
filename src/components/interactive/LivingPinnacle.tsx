@@ -70,7 +70,7 @@ export function LivingPinnacle() {
           {/* Brand Badge */}
           <div className="inline-flex items-center gap-2 bg-[#008080]/10 backdrop-blur-sm border border-[#008080]/20 rounded-full px-4 py-2 mb-8">
             <div className="w-2 h-2 bg-[#008080] rounded-full animate-pulse"></div>
-            <span className="font-inter text-sm text-[#008080] font-medium">Exclusive to Shivamogga's Master Craftsmen</span>
+            <span className="font-inter text-sm text-[#008080] font-medium">Exclusive to Shivamogga&apos;s Master Craftsmen</span>
           </div>
 
           <h1 className="font-montserrat text-4xl md:text-6xl lg:text-7xl font-bold text-foundation-charcoal mb-6 leading-tight tracking-tight-architectural">
@@ -114,7 +114,7 @@ export function LivingPinnacle() {
                 <Target className="h-6 w-6 text-[#008080]" />
               </div>
               <h3 className="font-montserrat font-semibold text-foundation-charcoal mb-2">Local Focus</h3>
-              <p className="font-inter text-sm text-accent-gray">Exclusively serving Shivamogga's premium market</p>
+              <p className="font-inter text-sm text-accent-gray">Exclusively serving Shivamogga&apos;s premium market</p>
             </div>
             
             <div className="bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50">
