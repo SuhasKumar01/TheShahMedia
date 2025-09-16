@@ -131,15 +131,30 @@
     @apply border-border outline-ring/50;
   }
   
-  /* Hide scroll bars while maintaining scroll functionality */
-  html {
-    overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* Comprehensive scroll bar hiding */
+  html, body {
+    overflow-x: hidden !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* Internet Explorer 10+ */
   }
   
-  html::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+  html::-webkit-scrollbar, 
+  body::-webkit-scrollbar {
+    display: none !important; /* Safari and Chrome */
+    width: 0 !important;
+    height: 0 !important;
+  }
+  
+  /* Hide all scroll bars universally */
+  * {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+  }
+  
+  *::-webkit-scrollbar {
+    display: none !important; /* Safari and Chrome */
+    width: 0 !important;
+    height: 0 !important;
   }
   
   body {
@@ -147,36 +162,7 @@
     background: var(--premium-gradient-primary);
     position: relative;
     min-height: 100vh;
-    overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-  }
-  
-  body::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
-  
-  /* Hide scroll bars for all elements */
-  * {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-  }
-  
-  *::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
-  
-  /* Ensure no horizontal overflow anywhere */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  
-  #__next {
-    overflow-x: hidden;
-  }
-  
-  main {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
   
   /* Premium background overlay for enhanced depth */
@@ -1315,6 +1301,24 @@ html {
 /* Additional scroll bar prevention */
 html, body {
   scroll-behavior: smooth;
+}
+
+/* Next.js specific containers */
+#__next {
+  overflow-x: hidden !important;
+}
+
+#__next::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Main content containers */
+main {
+  overflow-x: hidden !important;
+}
+
+main::-webkit-scrollbar {
+  display: none !important;
 }
 
 @media (max-width: 768px) {
