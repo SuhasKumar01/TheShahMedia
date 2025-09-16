@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -10,19 +10,8 @@ import { useLoading } from "@/contexts/LoadingContext";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const { isLoading, hasLoadedOnce } = useLoading();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -33,8 +22,8 @@ const Header: React.FC = () => {
   };
 
   const navItems = [
-    { 
-      name: "Solutions", 
+    {
+      name: "Solutions",
       href: "#solutions",
       hasDropdown: true,
       dropdownItems: [
@@ -46,8 +35,8 @@ const Header: React.FC = () => {
     },
     { name: "Pricing", href: "#pricing", hasDropdown: false },
     { name: "Integrations", href: "#integrations", hasDropdown: false },
-    { 
-      name: "Resources", 
+    {
+      name: "Resources",
       href: "#resources",
       hasDropdown: true,
       dropdownItems: [
@@ -64,20 +53,15 @@ const Header: React.FC = () => {
   }
 
   return (
-    <motion.header 
-      className="fixed top-4 left-4 right-4 z-[60] transition-all duration-300"
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-[60] transition-all duration-300"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      <div className={`${
-        isScrolled 
-          ? "bg-white/95 backdrop-blur-xl border border-gray-200/50 shadow-lg" 
-          : "bg-white/90 backdrop-blur-md border border-gray-200/30"
-      } rounded-2xl transition-all duration-300`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-          <motion.div 
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 pt-4">
+          <motion.div
             className="flex-shrink-0"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
@@ -86,14 +70,14 @@ const Header: React.FC = () => {
               <div className="w-8 h-8 relative">
                 <Image
                   src="/logo-new.png"
-                  alt="Shah Media Logo" 
+                  alt="Shah Media Logo"
                   width={32}
                   height={32}
                   priority
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="ml-2 text-lg font-semibold text-gray-900 font-inter">
+              <span className="ml-2 text-lg font-semibold text-[#F8F8FF] font-inter">
                 Shah Media
               </span>
             </Link>
@@ -103,16 +87,16 @@ const Header: React.FC = () => {
             {navItems.map((item) => (
               <div key={item.name} className="relative">
                 {item.hasDropdown ? (
-                  <div 
+                  <div
                     className="relative"
                     onMouseEnter={() => setActiveDropdown(item.name)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <button className="flex items-center px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium">
+                    <button className="flex items-center px-3 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200 font-medium">
                       {item.name}
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
-                    
+
                     <AnimatePresence>
                       {activeDropdown === item.name && (
                         <motion.div
@@ -120,14 +104,14 @@ const Header: React.FC = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-56 bg-white/95 border border-gray-200/50 rounded-xl shadow-xl backdrop-blur-xl"
+                          className="absolute top-full left-0 mt-2 w-56 bg-black/90 border border-[#F8F8FF]/20 rounded-xl shadow-xl backdrop-blur-xl"
                         >
                           <div className="py-2">
                             {item.dropdownItems?.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.name}
                                 href={dropdownItem.href}
-                                className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50/50 transition-colors duration-200"
+                                className="block px-4 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] hover:bg-gray-50/10 transition-colors duration-200"
                               >
                                 {dropdownItem.name}
                               </Link>
@@ -140,7 +124,7 @@ const Header: React.FC = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className="px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+                    className="px-3 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200 font-medium"
                   >
                     {item.name}
                   </Link>
@@ -152,14 +136,14 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-4">
             <Link
               href="#login"
-              className="hidden lg:inline-flex text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+              className="hidden lg:inline-flex text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200 font-medium"
             >
               Log in
             </Link>
 
             <Link
               href="#contact"
-              className="hidden lg:inline-flex px-4 py-2 text-gray-600 hover:text-gray-900 border border-gray-300/50 hover:border-gray-300 rounded-lg transition-colors duration-200 font-medium"
+              className="hidden lg:inline-flex px-4 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] border border-[#F8F8FF]/30 hover:border-[#F8F8FF]/50 rounded-lg transition-colors duration-200 font-medium"
             >
               Talk to sales
             </Link>
@@ -175,7 +159,7 @@ const Header: React.FC = () => {
 
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              className="lg:hidden p-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -194,7 +178,7 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-gray-200/30 mt-4 overflow-hidden"
+              className="lg:hidden border-t border-[#F8F8FF]/20 mt-4 overflow-hidden"
             >
               <div className="py-4 space-y-2">
                 {navItems.map((item) => (
@@ -203,7 +187,7 @@ const Header: React.FC = () => {
                       <div>
                         <button
                           onClick={() => handleDropdownToggle(item.name)}
-                          className="flex items-center justify-between w-full px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+                          className="flex items-center justify-between w-full px-4 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200 font-medium"
                         >
                           {item.name}
                           <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
@@ -223,7 +207,7 @@ const Header: React.FC = () => {
                                 <Link
                                   key={dropdownItem.name}
                                   href={dropdownItem.href}
-                                  className="block px-4 py-2 text-gray-500 hover:text-gray-800 transition-colors duration-200"
+                                  className="block px-4 py-2 text-[#F8F8FF]/70 hover:text-[#F8F8FF] transition-colors duration-200"
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                   {dropdownItem.name}
@@ -236,7 +220,7 @@ const Header: React.FC = () => {
                     ) : (
                       <Link
                         href={item.href}
-                        className="block px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+                        className="block px-4 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200 font-medium"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -244,18 +228,18 @@ const Header: React.FC = () => {
                     )}
                   </div>
                 ))}
-                
-                <div className="pt-4 space-y-2 border-t border-gray-200/30">
+
+                <div className="pt-4 space-y-2 border-t border-[#F8F8FF]/20">
                   <Link
                     href="#login"
-                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+                    className="block px-4 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200 font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Log in
                   </Link>
                   <Link
                     href="#contact"
-                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+                    className="block px-4 py-2 text-[#F8F8FF]/80 hover:text-[#F8F8FF] transition-colors duration-200 font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Talk to sales
@@ -264,7 +248,7 @@ const Header: React.FC = () => {
                     asChild
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg"
                   >
-                    <Link 
+                    <Link
                       href="#signup"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -277,7 +261,6 @@ const Header: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
-    </div>
     </motion.header>
   );
 };
