@@ -56,8 +56,8 @@ const Header: React.FC = () => {
     <motion.header 
       className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
         isScrolled 
-          ? "bg-[#F1F1F1]/95 backdrop-blur-xl border-b border-[#111111]/10 shadow-lg" 
-          : "bg-[#F1F1F1]/90 backdrop-blur-lg border-b border-[#111111]/5"
+          ? "bg-[#F1F1F1]/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-[#111111]/10 dark:border-white/10 shadow-lg" 
+          : "bg-[#F1F1F1]/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-[#111111]/5 dark:border-white/5"
       }`}
       initial={{ y: -100 }}
       animate={{ y: isVisible ? 0 : -100 }}
@@ -122,13 +122,13 @@ const Header: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden lg:flex items-center space-x-2 bg-[#111111]/5 backdrop-blur-xl rounded-xl px-4 py-2 border border-[#111111]/10"
+              className="hidden lg:flex items-center space-x-2 bg-[#111111]/5 dark:bg-white/5 backdrop-blur-xl rounded-xl px-4 py-2 border border-[#111111]/10 dark:border-white/10"
             >
               <div className="w-2 h-2 bg-[#008080] rounded-full animate-pulse"></div>
-              <span className="text-[#111111]/70 text-sm font-medium font-inter">
+              <span className="text-[#111111]/70 dark:text-white/70 text-sm font-medium font-inter">
                 Available
               </span>
-              <span className="text-[#111111] text-sm font-semibold font-inter">
+              <span className="text-[#111111] dark:text-white text-sm font-semibold font-inter">
                 Mon-Sat
               </span>
             </motion.div>
@@ -165,7 +165,7 @@ const Header: React.FC = () => {
             <div className="lg:hidden">
               <motion.button
                 onClick={toggleMobileMenu}
-                className="p-3 text-[#111111]/70 hover:text-[#111111] transition-all duration-300 rounded-xl hover:bg-[#111111]/5"
+                className="p-3 text-[#111111]/70 dark:text-white/70 hover:text-[#111111] dark:hover:text-white transition-all duration-300 rounded-xl hover:bg-[#111111]/5 dark:hover:bg-white/5"
                 aria-label="Toggle mobile menu"
                 whileTap={{ scale: 0.95 }}
               >
@@ -205,9 +205,9 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-[#111111]/10 mt-4 overflow-hidden"
+              className="lg:hidden border-t border-[#111111]/10 dark:border-white/10 mt-4 overflow-hidden"
             >
-              <div className="py-6 space-y-2 bg-[#F1F1F1]/50 backdrop-blur-xl rounded-2xl mt-4 border border-[#111111]/10">
+              <div className="py-6 space-y-2 bg-[#F1F1F1]/50 dark:bg-gray-900/50 backdrop-blur-xl rounded-2xl mt-4 border border-[#111111]/10 dark:border-white/10">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
@@ -217,7 +217,7 @@ const Header: React.FC = () => {
                   >
                     <Link
                       href={item.href}
-                      className="flex items-center px-6 py-3 text-[#111111]/80 hover:text-[#111111] hover:bg-[#111111]/5 transition-all duration-300 rounded-xl font-medium"
+                      className="flex items-center px-6 py-3 text-[#111111]/80 dark:text-white/80 hover:text-[#111111] dark:hover:text-white hover:bg-[#111111]/5 dark:hover:bg-white/5 transition-all duration-300 rounded-xl font-medium"
                       onClick={() => setIsMobileMenuOpen(false)}
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >

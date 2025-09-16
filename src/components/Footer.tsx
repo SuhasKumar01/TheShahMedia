@@ -151,16 +151,16 @@ export default function Footer() {
 
         {/* Premium Brand Container */}
         <div className="flex justify-center items-center mb-12">
-          <div className="relative bg-white rounded-3xl p-12 md:p-16 lg:p-20 shadow-2xl shadow-black/20 border border-gray-100 max-w-6xl w-full mx-4">
+          <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-12 md:p-16 lg:p-20 shadow-2xl shadow-black/20 border border-gray-100 dark:border-gray-700 max-w-6xl w-full mx-4">
             {/* Subtle gradient overlay for depth */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50/30 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50/30 dark:from-gray-800 dark:via-gray-800 dark:to-gray-700/30 rounded-3xl"></div>
             
             {/* Content container */}
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
               
               {/* Brand Logo Section */}
               <div className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 relative flex-shrink-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-inner border border-gray-100/50"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-inner border border-gray-100/50 dark:border-gray-600/50"></div>
                 <div className="relative w-full h-full p-6 flex items-center justify-center">
                   <Image
                     src="/logo-new.png"
@@ -178,7 +178,7 @@ export default function Footer() {
 
               {/* Typography Logo Section - Using Original Brand Image */}
               <div className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 relative flex-shrink-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-inner border border-gray-100/50"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-inner border border-gray-100/50 dark:border-gray-600/50"></div>
                 <div className="relative w-full h-full p-2 flex items-center justify-center">
                   <Image
                     src="/typography-new.png"

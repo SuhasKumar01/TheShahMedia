@@ -73,14 +73,14 @@ export default function TestimonialsSection() {
   const currentTest = testimonials[currentTestimonial]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0]">
+    <section className="py-20 bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0] dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection animation="fadeInUp" className="text-center mb-16">
           <div>
-            <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-[#111111] mb-6">
+            <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-[#111111] dark:text-white mb-6">
               Success Stories from Shivamogga&apos;s Master Craftsmen
             </h2>
-            <p className="font-inter text-lg text-[#666666] max-w-3xl mx-auto">
+            <p className="font-inter text-lg text-[#666666] dark:text-gray-300 max-w-3xl mx-auto">
               Real results from local professionals who transformed their businesses with our Local Growth Engine
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Main Testimonial Card */}
           <AnimatedSection animation="fadeInLeft" className="order-2 lg:order-1">
-            <div className="bg-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl relative overflow-hidden">
               {/* Quote Icon */}
               <div className="absolute top-4 right-4 text-[#007BFF]/20">
                 <Quote className="h-12 w-12" />
@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Testimonial Content */}
-              <blockquote className="font-inter text-lg text-[#111111] leading-relaxed mb-6 relative">
+              <blockquote className="font-inter text-lg text-[#111111] dark:text-white leading-relaxed mb-6 relative">
                 &ldquo;{currentTest.content}&rdquo;
               </blockquote>
 
@@ -117,13 +117,13 @@ export default function TestimonialsSection() {
               {/* Author Info */}
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="font-montserrat font-bold text-lg text-[#111111]">
+                  <div className="font-montserrat font-bold text-lg text-[#111111] dark:text-white">
                     {currentTest.name}
                   </div>
-                  <div className="font-inter text-[#666666]">
+                  <div className="font-inter text-[#666666] dark:text-gray-300">
                     {currentTest.title} • {currentTest.company}
                   </div>
-                  <div className="font-inter text-sm text-[#999999]">
+                  <div className="font-inter text-sm text-[#999999] dark:text-gray-400">
                     📍 {currentTest.location}
                   </div>
                 </div>
@@ -132,10 +132,10 @@ export default function TestimonialsSection() {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={prevTestimonial}
-                    className="p-2 rounded-full bg-[#F1F1F1] hover:bg-[#E1E1E1] transition-colors"
+                    className="p-2 rounded-full bg-[#F1F1F1] dark:bg-gray-700 hover:bg-[#E1E1E1] dark:hover:bg-gray-600 transition-colors"
                     aria-label="Previous testimonial"
                   >
-                    <ChevronLeft className="h-5 w-5 text-[#666666]" />
+                    <ChevronLeft className="h-5 w-5 text-[#666666] dark:text-gray-300" />
                   </button>
                   <button
                     onClick={nextTestimonial}
@@ -159,7 +159,7 @@ export default function TestimonialsSection() {
                   className={`p-4 rounded-xl cursor-pointer transition-all duration-300 ${
                     index === currentTestimonial
                       ? 'bg-[#007BFF] text-white shadow-lg scale-105'
-                      : 'bg-white text-[#111111] hover:bg-[#F8FAFC] hover:shadow-md'
+                      : 'bg-white dark:bg-gray-800 text-[#111111] dark:text-white hover:bg-[#F8FAFC] dark:hover:bg-gray-700 hover:shadow-md'
                   }`}
                 >
                   <div className="flex items-center mb-3">
@@ -176,7 +176,7 @@ export default function TestimonialsSection() {
                     {testimonial.name}
                   </div>
                   <div className={`font-inter text-xs mb-2 ${
-                    index === currentTestimonial ? 'text-white/80' : 'text-[#666666]'
+                    index === currentTestimonial ? 'text-white/80' : 'text-[#666666] dark:text-gray-300'
                   }`}>
                     {testimonial.title} • {testimonial.company}
                   </div>
@@ -195,20 +195,20 @@ export default function TestimonialsSection() {
         <AnimatedSection animation="fadeInUp" delay={0.3} className="mt-16">
           <div className="text-center">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
                 <div className="text-3xl font-bold text-[#007BFF] mb-2">100%</div>
-                <div className="font-inter text-[#666666]">Local Focus</div>
-                <div className="font-inter text-sm text-[#999999]">Exclusively serving Shivamogga</div>
+                <div className="font-inter text-[#666666] dark:text-gray-300">Local Focus</div>
+                <div className="font-inter text-sm text-[#999999] dark:text-gray-400">Exclusively serving Shivamogga</div>
               </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
                 <div className="text-3xl font-bold text-[#007BFF] mb-2">5⭐</div>
-                <div className="font-inter text-[#666666]">Average Rating</div>
-                <div className="font-inter text-sm text-[#999999]">From all our Master Craftsmen</div>
+                <div className="font-inter text-[#666666] dark:text-gray-300">Average Rating</div>
+                <div className="font-inter text-sm text-[#999999] dark:text-gray-400">From all our Master Craftsmen</div>
               </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="text-3xl font-bold text-[#111111] mb-2">12+</div>
-                <div className="font-inter text-[#666666]">Success Stories</div>
-                <div className="font-inter text-sm text-[#999999]">And growing every month</div>
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                <div className="text-3xl font-bold text-[#111111] dark:text-white mb-2">12+</div>
+                <div className="font-inter text-[#666666] dark:text-gray-300">Success Stories</div>
+                <div className="font-inter text-sm text-[#999999] dark:text-gray-400">And growing every month</div>
               </div>
             </div>
           </div>

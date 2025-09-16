@@ -48,7 +48,7 @@ export default function EnhancedHero() {
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#F8F9FA] via-white to-[#E8F4FD]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#F8F9FA] via-white to-[#E8F4FD] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -109,7 +109,7 @@ export default function EnhancedHero() {
 
         <motion.h1 
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#111111] leading-tight mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#111111] dark:text-white leading-tight mb-6"
         >
           <span className="block font-montserrat">
             Stop Chasing
@@ -124,7 +124,7 @@ export default function EnhancedHero() {
 
         <motion.p 
           variants={itemVariants}
-          className="text-xl md:text-2xl text-[#666666] font-inter max-w-4xl mx-auto leading-relaxed mb-12"
+          className="text-xl md:text-2xl text-[#666666] dark:text-gray-300 font-inter max-w-4xl mx-auto leading-relaxed mb-12"
         >
           Transform your business from unpredictable word-of-mouth to a{" "}
           <span className="font-semibold text-[#007BFF]">steady stream of high-value clients</span>{" "}
@@ -189,7 +189,7 @@ export default function EnhancedHero() {
             return (
               <motion.div
                 key={index}
-                className="p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg"
+                className="p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl border border-white/20 dark:border-gray-700/20 shadow-lg"
                 whileHover={{ 
                   y: -5,
                   boxShadow: "0 20px 40px rgba(0, 123, 255, 0.1)"
@@ -199,10 +199,10 @@ export default function EnhancedHero() {
                 <div className="w-12 h-12 bg-gradient-to-r from-[#007BFF] to-[#008080] rounded-xl flex items-center justify-center mb-4 mx-auto">
                   <IconComponent className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="font-montserrat font-semibold text-[#111111] mb-2">
+                <h3 className="font-montserrat font-semibold text-[#111111] dark:text-white mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-[#666666] font-inter text-sm leading-relaxed">
+                <p className="text-[#666666] dark:text-gray-300 font-inter text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
@@ -212,7 +212,7 @@ export default function EnhancedHero() {
       </motion.div>
 
       {/* Gradient Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 dark:from-gray-900/80 to-transparent pointer-events-none"></div>
     </section>
   );
 }

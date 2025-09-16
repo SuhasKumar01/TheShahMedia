@@ -45,7 +45,7 @@ export default function FloatingDock() {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50"
         >
-          <div className="bg-white/90 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-3">
+          <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 rounded-2xl shadow-2xl p-3">
             <div className="flex items-center space-x-2">
               {dockItems.map((item, index) => {
                 const IconComponent = item.icon;
@@ -70,7 +70,7 @@ export default function FloatingDock() {
                           className={`h-5 w-5 transition-colors duration-300 ${
                             hoveredIndex === index 
                               ? "text-[#007BFF]" 
-                              : "text-[#111111]/70 group-hover:text-[#007BFF]"
+                              : "text-[#111111]/70 dark:text-white/70 group-hover:text-[#007BFF]"
                           }`} 
                         />
                         
@@ -82,10 +82,10 @@ export default function FloatingDock() {
                               animate={{ opacity: 1, y: 0, scale: 1 }}
                               exit={{ opacity: 0, y: -10, scale: 0.8 }}
                               transition={{ duration: 0.2 }}
-                              className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-[#111111] text-white px-3 py-1 rounded-lg text-sm font-medium whitespace-nowrap"
+                              className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-[#111111] dark:bg-white text-white dark:text-black px-3 py-1 rounded-lg text-sm font-medium whitespace-nowrap"
                             >
                               {item.name}
-                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-[#111111]" />
+                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-[#111111] dark:border-b-white" />
                             </motion.div>
                           )}
                         </AnimatePresence>

@@ -266,7 +266,7 @@ export default function EnhancedAiChatAssistant() {
         </motion.div>
       </DialogTrigger>
       
-      <DialogContent className="sm:max-w-lg h-[700px] p-0 bg-white border-0 shadow-2xl">
+      <DialogContent className="sm:max-w-lg h-[700px] p-0 bg-white dark:bg-gray-900 border-0 shadow-2xl">
         {/* Header */}
         <DialogHeader className="p-6 border-b bg-gradient-to-r from-[#007BFF] to-[#008080] text-white rounded-t-lg">
           <div className="flex items-center justify-between">
@@ -311,7 +311,7 @@ export default function EnhancedAiChatAssistant() {
                   className={`max-w-[85%] p-3 rounded-2xl ${
                     message.sender === 'user'
                       ? 'bg-[#007BFF] text-white ml-8'
-                      : 'bg-gray-50 text-[#111111] mr-8'
+                      : 'bg-gray-50 dark:bg-gray-800 text-[#111111] dark:text-white mr-8'
                   }`}
                 >
                   <p className="font-inter text-sm whitespace-pre-line leading-relaxed">
@@ -328,8 +328,8 @@ export default function EnhancedAiChatAssistant() {
                 </div>
 
                 {message.sender === 'user' && (
-                  <div className="w-8 h-8 rounded-full bg-[#111111] flex items-center justify-center flex-shrink-0">
-                    <User size={16} className="text-white" />
+                  <div className="w-8 h-8 rounded-full bg-[#111111] dark:bg-white flex items-center justify-center flex-shrink-0">
+                    <User size={16} className="text-white dark:text-black" />
                   </div>
                 )}
               </motion.div>
@@ -344,7 +344,7 @@ export default function EnhancedAiChatAssistant() {
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#007BFF] to-[#008080] flex items-center justify-center">
                   <Bot size={16} className="text-white" />
                 </div>
-                <div className="bg-gray-50 p-3 rounded-2xl">
+                <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-2xl">
                   <div className="flex gap-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce bounce-delay-0"></div>
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce bounce-delay-100"></div>
@@ -379,7 +379,7 @@ export default function EnhancedAiChatAssistant() {
         )}
 
         {/* Input */}
-        <div className="p-4 border-t bg-gray-50">
+        <div className="p-4 border-t bg-gray-50 dark:bg-gray-800">
           <div className="flex gap-2">
             <Input
               value={inputValue}
