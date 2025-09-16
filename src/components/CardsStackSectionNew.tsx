@@ -32,15 +32,15 @@ const GROWTH_PILLARS = [
 
 const CardsStackSection = () => {
   return (
-    <div className="container min-h-svh place-content-center bg-stone-50 px-6 text-stone-900 xl:px-12">
+    <div className="container min-h-svh place-content-center bg-[var(--bg-primary)] px-6 text-[var(--text-primary)] xl:px-12">
       <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">
         <div className="left-0 top-0 md:sticky md:h-svh md:py-12">
-          <h5 className="text-xs uppercase tracking-wide">the local growth engine</h5>
-          <h2 className="mb-6 mt-4 text-4xl font-bold tracking-tight">
+          <h5 className="text-xs uppercase tracking-wide text-[var(--text-muted)]">the local growth engine</h5>
+          <h2 className="mb-6 mt-4 text-4xl font-bold tracking-tight text-[var(--text-primary)]">
             Building your{" "}
-            <span className="text-indigo-500">customer acquisition</span> system
+            <span className="text-[var(--accent-primary)]">customer acquisition</span> system
           </h2>
-          <p className="max-w-prose text-sm">
+          <p className="max-w-prose text-sm text-[var(--text-secondary)]">
             We don&apos;t just run ads or build websites. We install a complete, end-to-end customer acquisition system that transforms unpredictable referrals into a steady stream of qualified prospects ready to invest in quality work.
           </p>
         </div>
@@ -49,17 +49,17 @@ const CardsStackSection = () => {
             <CardSticky
               key={pillar.id}
               index={index + 2}
-              className="rounded-2xl border p-8 shadow-md backdrop-blur-md"
+              className="rounded-2xl border border-[var(--border-primary)] bg-[var(--card-bg)] p-8 shadow-md backdrop-blur-md"
             >
               <div className="flex items-center justify-between gap-4">
-                <h2 className="my-6 text-2xl font-bold tracking-tighter">
+                <h2 className="my-6 text-2xl font-bold tracking-tighter text-[var(--text-primary)]">
                   {pillar.title}
                 </h2>
-                <h3 className="text-2xl font-bold text-indigo-500">
+                <h3 className="text-2xl font-bold text-[var(--accent-primary)]">
                   {String(index + 1).padStart(2, "0")}
                 </h3>
               </div>
-              <p className="text-foreground">{pillar.description}</p>
+              <p className="text-[var(--text-secondary)]">{pillar.description}</p>
             </CardSticky>
           ))}
         </ContainerScroll>

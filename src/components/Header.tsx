@@ -56,8 +56,8 @@ const Header: React.FC = () => {
     <motion.header 
       className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
         isScrolled 
-          ? "bg-[#F1F1F1]/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-[#111111]/10 dark:border-white/10 shadow-lg" 
-          : "bg-[#F1F1F1]/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-[#111111]/5 dark:border-white/5"
+          ? "glass-navigation shadow-premium-strong" 
+          : "glass-navigation"
       }`}
       initial={{ y: -100 }}
       animate={{ y: isVisible ? 0 : -100 }}
@@ -101,15 +101,16 @@ const Header: React.FC = () => {
               >
                 <Link
                   href={item.href}
-                  className="relative px-6 py-3 font-medium text-[#111111]/80 hover:text-[#111111] transition-all duration-300 rounded-xl hover:bg-[#111111]/5 group"
+                  className="relative px-6 py-3 font-medium text-[#F1F1F1]/90 hover:text-[#F1F1F1] transition-all duration-300 rounded-xl hover:bg-white/10 group hover-lift"
                   style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   <span className="relative z-10 flex items-center">
                     <item.icon className="h-4 w-4 mr-2 opacity-70 group-hover:opacity-100 transition-opacity" />
                     {item.name}
                   </span>
-                  {/* Subtle highlight effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#008080]/5 via-[#008080]/10 to-[#008080]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                  {/* Premium highlight effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#007BFF]/10 via-[#008080]/15 to-[#007BFF]/10 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"></div>
+                  <div className="absolute inset-0 border border-white/0 group-hover:border-white/20 transition-all duration-300 rounded-xl"></div>
                 </Link>
               </motion.div>
             ))}
@@ -122,13 +123,13 @@ const Header: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden lg:flex items-center space-x-2 bg-[#111111]/5 dark:bg-white/5 backdrop-blur-xl rounded-xl px-4 py-2 border border-[#111111]/10 dark:border-white/10"
+              className="hidden lg:flex items-center space-x-2 glass-card-subtle px-4 py-2"
             >
-              <div className="w-2 h-2 bg-[#008080] rounded-full animate-pulse"></div>
-              <span className="text-[#111111]/70 dark:text-white/70 text-sm font-medium font-inter">
+              <div className="w-2 h-2 bg-[#007BFF] rounded-full animate-premium-pulse"></div>
+              <span className="text-[#F1F1F1]/80 text-sm font-medium font-inter">
                 Available
               </span>
-              <span className="text-[#111111] dark:text-white text-sm font-semibold font-inter">
+              <span className="text-[#F1F1F1] text-sm font-semibold font-inter">
                 Mon-Sat
               </span>
             </motion.div>
@@ -151,7 +152,7 @@ const Header: React.FC = () => {
             >
               <Button 
                 asChild 
-                className="relative px-6 py-3 bg-[#007BFF] hover:bg-[#0056b3] text-white font-semibold rounded-xl shadow-lg shadow-[#007BFF]/20 hover:shadow-[#007BFF]/30 transition-all duration-300 transform hover:scale-105 border border-[#007BFF]/20"
+                className="btn-primary px-6 py-3 font-semibold rounded-xl"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <Link href="#contact" className="flex items-center">
@@ -165,7 +166,7 @@ const Header: React.FC = () => {
             <div className="lg:hidden">
               <motion.button
                 onClick={toggleMobileMenu}
-                className="p-3 text-[#111111]/70 dark:text-white/70 hover:text-[#111111] dark:hover:text-white transition-all duration-300 rounded-xl hover:bg-[#111111]/5 dark:hover:bg-white/5"
+                className="p-3 text-[#F1F1F1]/80 hover:text-[#F1F1F1] transition-all duration-300 rounded-xl hover:bg-white/10 glass-card-subtle"
                 aria-label="Toggle mobile menu"
                 whileTap={{ scale: 0.95 }}
               >
@@ -205,9 +206,9 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-[#111111]/10 dark:border-white/10 mt-4 overflow-hidden"
+              className="lg:hidden border-t border-[#b9b2aa]/30 dark:border-[#b9b2aa]/30 mt-4 overflow-hidden"
             >
-              <div className="py-6 space-y-2 bg-[#F1F1F1]/50 dark:bg-gray-900/50 backdrop-blur-xl rounded-2xl mt-4 border border-[#111111]/10 dark:border-white/10">
+              <div className="py-6 space-y-2 bg-[#b9b2aa]/30 dark:bg-[#b9b2aa]/30 backdrop-blur-xl rounded-2xl mt-4 border border-[#b9b2aa]/40 dark:border-[#b9b2aa]/40">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
@@ -217,7 +218,7 @@ const Header: React.FC = () => {
                   >
                     <Link
                       href={item.href}
-                      className="flex items-center px-6 py-3 text-[#111111]/80 dark:text-white/80 hover:text-[#111111] dark:hover:text-white hover:bg-[#111111]/5 dark:hover:bg-white/5 transition-all duration-300 rounded-xl font-medium"
+                      className="flex items-center px-6 py-3 text-[#F1F1F1]/90 dark:text-[#F1F1F1]/90 hover:text-[#F1F1F1] dark:hover:text-[#F1F1F1] hover:bg-[#36454f]/40 dark:hover:bg-[#36454f]/40 transition-all duration-300 rounded-xl font-medium"
                       onClick={() => setIsMobileMenuOpen(false)}
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >

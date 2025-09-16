@@ -160,8 +160,8 @@ function PillarContent({ pillar }: { pillar: number }) {
   
   return (
     <div className="relative overflow-hidden">
-      {/* Premium gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-indigo-900" />
+      {/* Outskill theme gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F1F1F1] via-[#b9b2aa] to-[#F1F1F1] dark:from-[#36454f] dark:via-[#2a3138] dark:to-[#36454f]" />
       
       {/* Content */}
       <div className="relative z-10 p-8 md:p-12">
@@ -173,11 +173,11 @@ function PillarContent({ pillar }: { pillar: number }) {
             </div>
           </div>
           <div className="flex-1">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg mb-4">
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white shadow-lg mb-4">
               <div className="w-2 h-2 bg-white rounded-full mr-3 animate-pulse" />
               Stage {Math.ceil(pillarData.id / 3)}: {pillarData.stage}
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#007BFF] to-[#0056b3] bg-clip-text text-transparent mb-2">
               Pillar {pillarData.id}: {pillarData.title}
             </h3>
           </div>
@@ -185,17 +185,17 @@ function PillarContent({ pillar }: { pillar: number }) {
         
         {/* Headline */}
         <div className="mb-8">
-          <h4 className="text-2xl md:text-3xl font-bold text-neutral-800 dark:text-white mb-4 leading-tight">
+          <h4 className="text-2xl md:text-3xl font-bold text-[#36454f] dark:text-[#F1F1F1] mb-4 leading-tight">
             {pillarData.headline}
           </h4>
           
           {/* Decorative line */}
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-full" />
         </div>
         
         {/* Description */}
         <div className="mb-10">
-          <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-[#36454f] dark:text-[#b9b2aa] leading-relaxed font-light">
             {pillarData.description}
           </p>
         </div>
@@ -203,58 +203,58 @@ function PillarContent({ pillar }: { pillar: number }) {
         {/* Benefits & Implementation Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="group">
-            <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-indigo-100 dark:border-neutral-700 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+            <div className="bg-[#F1F1F1]/80 dark:bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 dark:border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
               <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mr-4">
+                <div className="w-10 h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-xl flex items-center justify-center mr-4">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
-                <h5 className="text-xl font-bold text-neutral-800 dark:text-white">Key Benefits</h5>
+                <h5 className="text-xl font-bold text-[#36454f] dark:text-[#F1F1F1]">Key Benefits</h5>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Strategic market positioning</span>
+                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Strategic market positioning</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Increased conversion rates</span>
+                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Increased conversion rates</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Premium pricing capability</span>
+                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Premium pricing capability</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Streamlined operations</span>
+                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Streamlined operations</span>
                 </li>
               </ul>
             </div>
           </div>
           
           <div className="group">
-            <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-purple-100 dark:border-neutral-700 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+            <div className="bg-[#F1F1F1]/80 dark:bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 dark:border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
               <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4">
+                <div className="w-10 h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-xl flex items-center justify-center mr-4">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
-                <h5 className="text-xl font-bold text-neutral-800 dark:text-white">Implementation</h5>
+                <h5 className="text-xl font-bold text-[#36454f] dark:text-[#F1F1F1]">Implementation</h5>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Week 1-2: Discovery & Strategy</span>
+                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 1-2: Discovery & Strategy</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Week 3-4: Development</span>
+                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 3-4: Development</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Week 5-6: Testing & Launch</span>
+                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 5-6: Testing & Launch</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">Week 7-8: Optimization</span>
+                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
+                  <span className="text-[#36454f] dark:text-[#b9b2aa] font-medium">Week 7-8: Optimization</span>
                 </li>
               </ul>
             </div>
@@ -263,7 +263,7 @@ function PillarContent({ pillar }: { pillar: number }) {
         
         {/* Call to Action */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
+          <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
             <span className="text-lg font-semibold mr-3">Ready to implement this pillar?</span>
             <Target className="w-6 h-6 text-white" />
           </div>
@@ -350,35 +350,35 @@ export function Card({ card, layout = false }: CardProps) {
               transition={{ duration: 0.3, ease: "easeOut" }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-6xl mx-auto bg-white/95 dark:bg-neutral-900/95 backdrop-blur-2xl h-fit z-[60] my-10 p-2 rounded-3xl font-sans relative shadow-2xl border border-white/20 dark:border-neutral-700/20"
+              className="max-w-6xl mx-auto bg-[#F1F1F1]/95 dark:bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] my-10 p-2 rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 dark:border-[#b9b2aa]/20"
             >
               {/* Close button with premium styling */}
               <button
-                className="sticky top-6 h-10 w-10 right-6 ml-auto bg-gradient-to-r from-neutral-800 to-neutral-900 dark:from-white dark:to-neutral-100 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
+                className="sticky top-6 h-10 w-10 right-6 ml-auto bg-gradient-to-r from-[#36454f] to-[#2a3138] dark:from-[#F1F1F1] dark:to-[#b9b2aa] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
                 onClick={() => setOpen(false)}
                 aria-label="Close modal"
               >
-                <X className="h-5 w-5 text-white dark:text-neutral-900" />
+                <X className="h-5 w-5 text-[#F1F1F1] dark:text-[#36454f]" />
               </button>
               
               {/* Header section with premium gradient */}
               <div className="px-8 md:px-12 pb-6">
                 <motion.p
                   layoutId={layout ? `category-${card.title}` : undefined}
-                  className="text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"
+                  className="text-lg font-semibold bg-gradient-to-r from-[#007BFF] to-[#0056b3] bg-clip-text text-transparent"
                 >
                   {card.category}
                 </motion.p>
                 <motion.p
                   layoutId={layout ? `title-${card.title}` : undefined}
-                  className="text-3xl md:text-6xl font-bold text-neutral-800 dark:text-white mt-2 leading-tight"
+                  className="text-3xl md:text-6xl font-bold text-[#36454f] dark:text-[#F1F1F1] mt-2 leading-tight"
                 >
                   {card.title}
                 </motion.p>
               </div>
               
               {/* Content with scroll */}
-              <div className="max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-600 scrollbar-track-transparent">
+              <div className="max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-thumb-[#b9b2aa] dark:scrollbar-thumb-[#b9b2aa] scrollbar-track-transparent">
                 {card.content}
               </div>
             </motion.div>

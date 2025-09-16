@@ -266,24 +266,24 @@ export default function EnhancedAiChatAssistant() {
         </motion.div>
       </DialogTrigger>
       
-      <DialogContent className="sm:max-w-lg h-[700px] p-0 bg-white dark:bg-gray-900 border-0 shadow-2xl">
+      <DialogContent className="sm:max-w-lg h-[700px] p-0 bg-[#F1F1F1] dark:bg-[#36454f] border-0 shadow-2xl">
         {/* Header */}
-        <DialogHeader className="p-6 border-b bg-gradient-to-r from-[#007BFF] to-[#008080] text-white rounded-t-lg">
+        <DialogHeader className="p-6 border-b !bg-[#36454f] dark:!bg-[#36454f] text-[#F1F1F1] rounded-t-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-[#F1F1F1]/20 flex items-center justify-center">
                 <Bot size={20} />
               </div>
               <div>
-                <DialogTitle className="font-montserrat font-semibold text-lg">AI Assistant</DialogTitle>
-                <p className="text-sm opacity-90 font-inter">The Shah Media</p>
+                <DialogTitle className="font-montserrat font-semibold text-lg text-[#F1F1F1]">AI Assistant</DialogTitle>
+                <p className="text-sm opacity-90 font-inter text-[#b9b2aa]">The Shah Media</p>
               </div>
             </div>
             <Button
               variant="ghost" 
               size="sm"
               onClick={() => setIsOpen(false)}
-              className="text-white hover:bg-white/20 h-8 w-8 p-0"
+              className="text-[#F1F1F1] hover:bg-[#F1F1F1]/20 h-8 w-8 p-0"
             >
               <X size={16} />
             </Button>
@@ -302,23 +302,23 @@ export default function EnhancedAiChatAssistant() {
                 className={`flex gap-3 ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {message.sender === 'bot' && (
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#007BFF] to-[#008080] flex items-center justify-center flex-shrink-0">
-                    <Bot size={16} className="text-white" />
+                  <div className="w-8 h-8 rounded-full bg-[#36454f] dark:bg-[#36454f] flex items-center justify-center flex-shrink-0">
+                    <Bot size={16} className="text-[#F1F1F1]" />
                   </div>
                 )}
                 
                 <div
                   className={`max-w-[85%] p-3 rounded-2xl ${
                     message.sender === 'user'
-                      ? 'bg-[#007BFF] text-white ml-8'
-                      : 'bg-gray-50 dark:bg-gray-800 text-[#111111] dark:text-white mr-8'
+                      ? 'bg-[#007BFF] text-[#F1F1F1] ml-8'
+                      : 'bg-[#b9b2aa]/20 dark:bg-[#2a3138] text-[#111111] dark:text-[#F1F1F1] mr-8'
                   }`}
                 >
                   <p className="font-inter text-sm whitespace-pre-line leading-relaxed">
                     {message.content}
                   </p>
                   <p className={`text-xs mt-1 opacity-70 ${
-                    message.sender === 'user' ? 'text-white/70' : 'text-gray-500'
+                    message.sender === 'user' ? 'text-[#F1F1F1]/70' : 'text-[#b9b2aa]'
                   }`}>
                     {message.timestamp.toLocaleTimeString('en-IN', { 
                       hour: '2-digit', 
@@ -328,8 +328,8 @@ export default function EnhancedAiChatAssistant() {
                 </div>
 
                 {message.sender === 'user' && (
-                  <div className="w-8 h-8 rounded-full bg-[#111111] dark:bg-white flex items-center justify-center flex-shrink-0">
-                    <User size={16} className="text-white dark:text-black" />
+                  <div className="w-8 h-8 rounded-full bg-[#36454f] dark:bg-[#F1F1F1] flex items-center justify-center flex-shrink-0">
+                    <User size={16} className="text-[#F1F1F1] dark:text-[#36454f]" />
                   </div>
                 )}
               </motion.div>
@@ -341,14 +341,14 @@ export default function EnhancedAiChatAssistant() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#007BFF] to-[#008080] flex items-center justify-center">
-                  <Bot size={16} className="text-white" />
+                <div className="w-8 h-8 rounded-full bg-[#36454f] dark:bg-[#36454f] flex items-center justify-center">
+                  <Bot size={16} className="text-[#F1F1F1]" />
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-2xl">
+                <div className="bg-[#b9b2aa]/20 dark:bg-[#2a3138] p-3 rounded-2xl">
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce bounce-delay-0"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce bounce-delay-100"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce bounce-delay-200"></div>
+                    <div className="w-2 h-2 bg-[#b9b2aa] rounded-full animate-bounce bounce-delay-0"></div>
+                    <div className="w-2 h-2 bg-[#b9b2aa] rounded-full animate-bounce bounce-delay-100"></div>
+                    <div className="w-2 h-2 bg-[#b9b2aa] rounded-full animate-bounce bounce-delay-200"></div>
                   </div>
                 </div>
               </motion.div>
@@ -361,7 +361,7 @@ export default function EnhancedAiChatAssistant() {
         {/* Quick Actions */}
         {messages.length === 1 && (
           <div className="px-4 pb-2">
-            <p className="text-xs text-gray-500 mb-2 font-inter">Quick actions:</p>
+            <p className="text-xs text-[#b9b2aa] mb-2 font-inter">Quick actions:</p>
             <div className="flex flex-wrap gap-2">
               {quickActions.map((action) => (
                 <Button
@@ -369,7 +369,7 @@ export default function EnhancedAiChatAssistant() {
                   variant="outline"
                   size="sm"
                   onClick={() => handleQuickAction(action)}
-                  className="text-xs font-inter hover:bg-[#007BFF] hover:text-white border-[#007BFF]/30"
+                  className="text-xs font-inter hover:bg-[#007BFF] hover:text-[#F1F1F1] border-[#007BFF]/30 text-[#36454f] dark:text-[#F1F1F1]"
                 >
                   {action}
                 </Button>
@@ -379,14 +379,14 @@ export default function EnhancedAiChatAssistant() {
         )}
 
         {/* Input */}
-        <div className="p-4 border-t bg-gray-50 dark:bg-gray-800">
+        <div className="p-4 border-t bg-[#b9b2aa]/10 dark:bg-[#2a3138]">
           <div className="flex gap-2">
             <Input
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Type your message..."
               onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSendMessage()}
-              className="flex-1 font-inter border-gray-200 focus:border-[#007BFF]"
+              className="flex-1 font-inter border-[#b9b2aa]/30 focus:border-[#007BFF] bg-[#F1F1F1] dark:bg-[#36454f] text-[#36454f] dark:text-[#F1F1F1]"
               disabled={isTyping}
             />
             <Button 
@@ -394,7 +394,7 @@ export default function EnhancedAiChatAssistant() {
               disabled={isTyping}
               size="sm"
               variant="outline"
-              className={`px-3 ${isListening ? 'bg-red-100 border-red-300 text-red-600' : 'hover:bg-gray-100'}`}
+              className={`px-3 ${isListening ? 'bg-red-100 border-red-300 text-red-600' : 'hover:bg-[#b9b2aa]/20 border-[#b9b2aa]/30 text-[#36454f] dark:text-[#F1F1F1]'}`}
             >
               {isListening ? <MicOff size={16} /> : <Mic size={16} />}
             </Button>
@@ -402,12 +402,12 @@ export default function EnhancedAiChatAssistant() {
               onClick={() => handleSendMessage()}
               disabled={!inputValue.trim() || isTyping}
               size="sm"
-              className="bg-[#007BFF] hover:bg-[#0056b3] text-white px-4"
+              className="bg-[#007BFF] hover:bg-[#0056b3] text-[#F1F1F1] px-4"
             >
               <Send size={16} />
             </Button>
           </div>
-          <p className="text-xs text-gray-500 mt-2 text-center font-inter">
+          <p className="text-xs text-[#b9b2aa] mt-2 text-center font-inter">
             <Sparkles className="inline h-3 w-3 mr-1" />
             Powered by The Shah Media AI
           </p>

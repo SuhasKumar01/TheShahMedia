@@ -43,14 +43,14 @@ export function ClientShowcase() {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#36454f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection animation="fadeInUp" className="text-center mb-16">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-[#111111] mb-6">
+            <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-[#F1F1F1] mb-6">
               Meet Our Master Craftsmen
             </h2>
-            <p className="font-inter text-xl text-[#666666] leading-relaxed">
+            <p className="font-inter text-xl text-[#b9b2aa] leading-relaxed">
               See how Shivamogga&apos;s leading designers, architects, and builders transformed their businesses 
               with our Local Growth Engine
             </p>
@@ -67,23 +67,23 @@ export function ClientShowcase() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="bg-gradient-to-br from-[#007BFF]/10 to-[#007BFF]/5 rounded-2xl p-6 border border-[#007BFF]/20">
                 <div className="text-3xl font-bold text-[#007BFF] mb-2">25+</div>
-                <div className="font-inter text-[#666666] font-medium">Master Craftsmen</div>
-                <div className="font-inter text-sm text-[#999999]">Served across Shivamogga</div>
+                <div className="font-inter text-[#F1F1F1] font-medium">Master Craftsmen</div>
+                <div className="font-inter text-sm text-[#b9b2aa]">Served across Shivamogga</div>
               </div>
               <div className="bg-gradient-to-br from-[#007BFF]/10 to-[#007BFF]/5 rounded-2xl p-6 border border-[#007BFF]/20">
                 <div className="text-3xl font-bold text-[#007BFF] mb-2">₹3.2Cr+</div>
-                <div className="font-inter text-[#666666] font-medium">Revenue Generated</div>
-                <div className="font-inter text-sm text-[#999999]">For our clients in 2024</div>
+                <div className="font-inter text-[#F1F1F1] font-medium">Revenue Generated</div>
+                <div className="font-inter text-sm text-[#b9b2aa]">For our clients in 2024</div>
               </div>
               <div className="bg-gradient-to-br from-[#007BFF]/10 to-[#007BFF]/5 rounded-2xl p-6 border border-[#007BFF]/20">
                 <div className="text-3xl font-bold text-[#007BFF] mb-2">4.9⭐</div>
-                <div className="font-inter text-[#666666] font-medium">Client Satisfaction</div>
-                <div className="font-inter text-sm text-[#999999]">Average rating from all clients</div>
+                <div className="font-inter text-[#F1F1F1] font-medium">Client Satisfaction</div>
+                <div className="font-inter text-sm text-[#b9b2aa]">Average rating from all clients</div>
               </div>
               <div className="bg-gradient-to-br from-[#007BFF]/10 to-[#007BFF]/5 rounded-2xl p-6 border border-[#007BFF]/20">
                 <div className="text-3xl font-bold text-[#007BFF] mb-2">180%</div>
-                <div className="font-inter text-[#666666] font-medium">Average ROI</div>
-                <div className="font-inter text-sm text-[#999999]">Within first 6 months</div>
+                <div className="font-inter text-[#F1F1F1] font-medium">Average ROI</div>
+                <div className="font-inter text-sm text-[#b9b2aa]">Within first 6 months</div>
               </div>
             </div>
           </div>
