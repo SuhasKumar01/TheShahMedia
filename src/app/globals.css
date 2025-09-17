@@ -1351,3 +1351,35 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/* Hide header when modal is open */
+body.modal-open header {
+  transform: translateY(-100%) !important;
+  transition: transform 0.3s ease-in-out !important;
+}
+
+/* Explicitly disable all transitions and hover effects for close button */
+.no-transition {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+.no-transition:hover {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important; /* Keep original shadow-lg */
+  filter: none !important;
+  scale: 1 !important;
+}
+
+.no-transition:focus,
+.no-transition:active {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important; /* Keep original shadow-lg */
+  filter: none !important;
+  scale: 1 !important;
+}

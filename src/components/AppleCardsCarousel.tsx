@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, X, Diamond, Building2, Camera, Bot, BookOpen, PenTool, Rocket, TrendingUp, Handshake, Sparkles, Zap, Target } from "lucide-react";
-import { useOutsideClick } from "@/hooks/use-outside-click";
 import Image from "next/image";
 
 type Card = {
@@ -164,97 +163,97 @@ function PillarContent({ pillar }: { pillar: number }) {
       <div className="absolute inset-0 bg-gradient-to-br from-[#36454f] via-[#2a3138] to-[#36454f]" />
       
       {/* Content */}
-      <div className="relative z-10 p-8 md:p-12">
+      <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-12">
         {/* Header Section */}
-        <div className="flex items-start gap-6 mb-8">
+        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-6 sm:mb-8">
           <div className="flex-shrink-0">
-            <div className={`w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br ${pillarData.iconColor} rounded-2xl flex items-center justify-center shadow-2xl`}>
-              <pillarData.icon className="w-10 h-10 md:w-12 md:h-12 text-white" />
+            <div className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br ${pillarData.iconColor} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-2xl`}>
+              <pillarData.icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
             </div>
           </div>
           <div className="flex-1">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white shadow-lg mb-4">
-              <div className="w-2 h-2 bg-white rounded-full mr-3 animate-pulse" />
+            <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white shadow-lg mb-3 sm:mb-4">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full mr-2 sm:mr-3 animate-pulse" />
               Stage {Math.ceil(pillarData.id / 3)}: {pillarData.stage}
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#007BFF] to-[#0056b3] bg-clip-text text-transparent mb-2">
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#007BFF] to-[#0056b3] bg-clip-text text-transparent mb-2">
               Pillar {pillarData.id}: {pillarData.title}
             </h3>
           </div>
         </div>
         
         {/* Headline */}
-        <div className="mb-8">
-          <h4 className="text-2xl md:text-3xl font-bold text-[#F1F1F1] mb-4 leading-tight">
+        <div className="mb-6 sm:mb-8">
+          <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#F1F1F1] mb-3 sm:mb-4 leading-tight">
             {pillarData.headline}
           </h4>
           
           {/* Decorative line */}
-          <div className="w-24 h-1 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-full" />
+          <div className="w-16 sm:w-20 md:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-full" />
         </div>
         
         {/* Description */}
-        <div className="mb-10">
-          <p className="text-lg md:text-xl text-[#b9b2aa] leading-relaxed font-light">
+        <div className="mb-8 sm:mb-10">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#b9b2aa] leading-relaxed font-light">
             {pillarData.description}
           </p>
         </div>
         
         {/* Benefits & Implementation Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           <div className="group">
-            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
-              <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-xl flex items-center justify-center mr-4">
-                  <Sparkles className="w-5 h-5 text-white" />
+            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20">
+              <div className="flex items-center mb-4 sm:mb-6">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <h5 className="text-xl font-bold text-[#F1F1F1]">Key Benefits</h5>
+                <h5 className="text-lg sm:text-xl font-bold text-[#F1F1F1]">Key Benefits</h5>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-3 sm:space-y-4">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Strategic market positioning</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Strategic market positioning</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Increased conversion rates</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Increased conversion rates</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Premium pricing capability</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Premium pricing capability</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#008080] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Streamlined operations</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Streamlined operations</span>
                 </li>
               </ul>
             </div>
           </div>
           
           <div className="group">
-            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-[#b9b2aa]/20 hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
-              <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-xl flex items-center justify-center mr-4">
-                  <Zap className="w-5 h-5 text-white" />
+            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20">
+              <div className="flex items-center mb-4 sm:mb-6">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <h5 className="text-xl font-bold text-[#F1F1F1]">Implementation</h5>
+                <h5 className="text-lg sm:text-xl font-bold text-[#F1F1F1]">Implementation</h5>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-3 sm:space-y-4">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Week 1-2: Discovery & Strategy</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 1-2: Discovery & Strategy</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Week 3-4: Development</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 3-4: Development</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Week 5-6: Testing & Launch</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 5-6: Testing & Launch</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-[#007BFF] rounded-full mt-3 mr-4 flex-shrink-0" />
-                  <span className="text-[#b9b2aa] font-medium">Week 7-8: Optimization</span>
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 7-8: Optimization</span>
                 </li>
               </ul>
             </div>
@@ -262,10 +261,10 @@ function PillarContent({ pillar }: { pillar: number }) {
         </div>
         
         {/* Call to Action */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
-            <span className="text-lg font-semibold mr-3">Ready to implement this pillar?</span>
-            <Target className="w-6 h-6 text-white" />
+        <div className="mt-8 sm:mt-10 md:mt-12 text-center">
+          <div className="inline-flex items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-xl sm:rounded-2xl shadow-lg cursor-pointer">
+            <span className="text-sm sm:text-base md:text-lg font-semibold mr-2 sm:mr-3">Ready to implement this pillar?</span>
+            <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
           </div>
         </div>
       </div>
@@ -306,22 +305,30 @@ export function BlurImage({
 interface CardProps {
   card: Card;
   layout?: boolean;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
-export function Card({ card, layout = false }: CardProps) {
-  const [open, setOpen] = useState(false);
+export function Card({ card, layout = false, isOpen, onOpen, onClose }: CardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useOutsideClick(containerRef, () => setOpen(false));
+  // Removed useOutsideClick to prevent modal from closing on backdrop click
+  // Modal now only closes when close button is clicked or Escape key is pressed
+  // useOutsideClick(containerRef, () => {
+  //   if (isOpen) {
+  //     onClose();
+  //   }
+  // });
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setOpen(false);
+      if (event.key === "Escape" && isOpen) {
+        onClose();
       }
     }
 
-    if (open) {
+    if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -329,77 +336,145 @@ export function Card({ card, layout = false }: CardProps) {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [isOpen, onClose]);
+
+  const handleCardClick = () => {
+    if (isOpen) {
+      onClose();
+    } else {
+      onOpen();
+    }
+  };
 
   return (
     <>
       <AnimatePresence>
-        {open && (
-          <div className="fixed inset-0 h-screen z-50 overflow-auto">
+        {isOpen && (
+          <div 
+            className="fixed inset-0 h-screen z-50 overflow-hidden"
+            onWheel={(e) => {
+              // Prevent wheel events from propagating to background
+              e.stopPropagation();
+            }}
+            onTouchMove={(e) => {
+              // Prevent touch scroll events from propagating to background
+              e.stopPropagation();
+            }}
+          >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="bg-black/60 backdrop-blur-xl h-full w-full fixed inset-0"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
             />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              ref={containerRef}
-              layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-6xl mx-auto bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] my-10 p-2 rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20"
+            <div 
+              className="h-full w-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 overflow-auto"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
             >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                transition={{ 
+                  duration: 0.4, 
+                  ease: [0.4, 0.0, 0.2, 1],
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30
+                }}
+                ref={containerRef}
+                className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] p-2 sm:p-3 md:p-4 lg:p-2 rounded-2xl sm:rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 max-h-[90vh] overflow-auto"
+                onMouseEnter={(e) => e.stopPropagation()}
+                onMouseLeave={(e) => e.stopPropagation()}
+                onMouseMove={(e) => e.stopPropagation()}
+                onMouseOver={(e) => e.stopPropagation()}
+                onMouseOut={(e) => e.stopPropagation()}
+              >
               {/* Close button with premium styling */}
               <button
-                className="sticky top-6 h-10 w-10 right-6 ml-auto bg-gradient-to-r from-[#F1F1F1] to-[#b9b2aa] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
-                onClick={() => setOpen(false)}
+                className="sticky top-4 sm:top-6 h-8 w-8 sm:h-10 sm:w-10 right-4 sm:right-6 ml-auto bg-gradient-to-r from-[#F1F1F1] to-[#b9b2aa] rounded-full flex items-center justify-center shadow-lg z-50 pointer-events-auto no-transition isolate"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onClose();
+                }}
+                onMouseEnter={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                onMouseLeave={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                onMouseMove={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                onMouseOver={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                onMouseOut={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
                 aria-label="Close modal"
+                type="button"
               >
-                <X className="h-5 w-5 text-[#36454f]" />
+                <X className="h-4 w-4 sm:h-5 sm:w-5 text-[#36454f]" />
               </button>
               
               {/* Header section with premium gradient */}
-              <div className="px-8 md:px-12 pb-6">
+              <div className="px-4 sm:px-6 md:px-8 lg:px-12 pb-4 sm:pb-6">
                 <motion.p
-                  layoutId={layout ? `category-${card.title}` : undefined}
-                  className="text-lg font-semibold bg-gradient-to-r from-[#007BFF] to-[#0056b3] bg-clip-text text-transparent"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-sm sm:text-base md:text-lg font-semibold bg-gradient-to-r from-[#007BFF] to-[#0056b3] bg-clip-text text-transparent"
                 >
                   {card.category}
                 </motion.p>
                 <motion.p
-                  layoutId={layout ? `title-${card.title}` : undefined}
-                  className="text-3xl md:text-6xl font-bold text-[#F1F1F1] mt-2 leading-tight"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#F1F1F1] mt-2 leading-tight"
                 >
                   {card.title}
                 </motion.p>
               </div>
               
               {/* Content with scroll */}
-              <div className="max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-thumb-[#b9b2aa] dark:scrollbar-thumb-[#b9b2aa] scrollbar-track-transparent">
+              <div className="max-h-[60vh] sm:max-h-[65vh] md:max-h-[70vh] lg:max-h-[75vh] overflow-y-auto scrollbar-thin scrollbar-thumb-[#b9b2aa] dark:scrollbar-thumb-[#b9b2aa] scrollbar-track-transparent">
                 {card.content}
               </div>
             </motion.div>
+            </div>
           </div>
         )}
       </AnimatePresence>
       <motion.button
-        layoutId={layout ? `card-${card.title}` : undefined}
-        onClick={() => setOpen(true)}
+        onClick={handleCardClick}
         className="rounded-3xl bg-[#36454f] h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        whileHover={!isOpen ? { scale: 1.02, y: -8 } : {}}
+        whileTap={!isOpen ? { scale: 0.98 } : {}}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        style={{ pointerEvents: isOpen ? 'none' : 'auto' }}
+        onMouseEnter={isOpen ? (e) => e.stopPropagation() : undefined}
+        onMouseLeave={isOpen ? (e) => e.stopPropagation() : undefined}
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
-            layoutId={layout ? `category-${card.title}` : undefined}
             className="text-white text-sm md:text-base font-medium font-sans text-left"
           >
             {card.category}
           </motion.p>
           <motion.p
-            layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
           >
             {card.title}
@@ -420,9 +495,11 @@ export function Card({ card, layout = false }: CardProps) {
 export function Carousel({
   items,
   initialScroll = 0,
+  isModalOpen = false,
 }: {
   items: React.ReactElement[];
   initialScroll?: number;
+  isModalOpen?: boolean;
 }) {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
@@ -501,34 +578,32 @@ export function Carousel({
 
   return (
     <div className="relative w-full">
-      {/* Glassmorphic Navigation Overlay */}
+      {/* Glassmorphic Navigation Overlay - Desktop Only */}
       <motion.div 
-        className="absolute top-1/2 left-4 right-4 transform -translate-y-1/2 z-[70] pointer-events-none"
+        className="absolute top-1/2 left-4 right-4 transform -translate-y-1/2 z-[70] pointer-events-none hidden lg:block"
         initial={{ opacity: 0 }}
-        animate={{ opacity: isHovering ? 1 : 0 }}
+        animate={{ opacity: (isHovering && !isModalOpen) ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <div className="flex justify-between items-center">
           <motion.button
-            className="pointer-events-auto relative h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center disabled:opacity-50 shadow-lg hover:shadow-xl transition-all duration-300"
+            className="pointer-events-auto relative h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center disabled:opacity-50 shadow-lg no-transition"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
             aria-label="Scroll left"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onMouseEnter={(e) => e.stopPropagation()}
+            onMouseLeave={(e) => e.stopPropagation()}
           >
             <ChevronLeft className="h-6 w-6 text-white drop-shadow-sm" />
           </motion.button>
 
           <motion.button
-            className="pointer-events-auto relative h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center disabled:opacity-50 shadow-lg hover:shadow-xl transition-all duration-300"
+            className="pointer-events-auto relative h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center disabled:opacity-50 shadow-lg no-transition"
             onClick={scrollRight}
             disabled={!canScrollRight}
             aria-label="Scroll right"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onMouseEnter={(e) => e.stopPropagation()}
+            onMouseLeave={(e) => e.stopPropagation()}
           >
             <ChevronRight className="h-6 w-6 text-white drop-shadow-sm" />
           </motion.button>
@@ -537,14 +612,18 @@ export function Carousel({
 
       {/* Carousel Container */}
       <motion.div
-        className="flex w-full overflow-x-scroll overscroll-x-auto py-10 md:py-20 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className={`flex w-full py-10 md:py-20 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${
+          isModalOpen 
+            ? 'overflow-hidden pointer-events-none' 
+            : 'overflow-x-scroll overscroll-x-auto'
+        }`}
         ref={carouselRef}
-        onScroll={checkScrollability}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        onMouseDown={() => setIsDragging(true)}
-        onMouseUp={() => setIsDragging(false)}
-        whileHover={{ scale: 1.02 }}
+        onScroll={!isModalOpen ? checkScrollability : undefined}
+        onMouseEnter={!isModalOpen ? () => setIsHovering(true) : undefined}
+        onMouseLeave={!isModalOpen ? () => setIsHovering(false) : undefined}
+        onMouseDown={!isModalOpen ? () => setIsDragging(true) : undefined}
+        onMouseUp={!isModalOpen ? () => setIsDragging(false) : undefined}
+        whileHover={{}}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
         {/* Gradient Fade Effects */}
@@ -569,10 +648,11 @@ export function Carousel({
               }}
               key={"card" + index}
               className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
-              whileHover={{ 
+              whileHover={!isModalOpen ? { 
                 scale: 1.05,
                 transition: { type: "spring", stiffness: 400, damping: 25 }
-              }}
+              } : {}}
+              style={{ pointerEvents: isModalOpen ? 'none' : 'auto' }}
             >
               {item}
             </motion.div>
@@ -596,8 +676,62 @@ export function Carousel({
 }
 
 export function AppleCardsCarousel() {
-  const cards = pillarsData.map((card) => (
-    <Card key={card.title} card={card} layout={true} />
+  const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
+
+  // Cleanup: restore body scrolling when component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'static';
+      document.body.style.top = 'auto';
+      document.body.style.left = 'auto';
+      document.body.style.right = 'auto';
+      document.body.style.touchAction = 'auto';
+      document.body.classList.remove('modal-open');
+    };
+  }, []);
+
+  const handleOpenCard = (index: number) => {
+    setOpenCardIndex(index);
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    // Disable body scrolling when modal opens with enhanced prevention
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.touchAction = 'none';
+    // Hide header when modal is open
+    document.body.classList.add('modal-open');
+  };
+
+  const handleCloseCard = () => {
+    setOpenCardIndex(null);
+    // Get the scroll position from the body top style
+    const scrollY = parseInt(document.body.style.top || '0') * -1;
+    // Re-enable body scrolling when modal closes
+    document.body.style.overflow = 'unset';
+    document.body.style.position = 'static';
+    document.body.style.top = 'auto';
+    document.body.style.left = 'auto';
+    document.body.style.right = 'auto';
+    document.body.style.touchAction = 'auto';
+    // Show header when modal is closed
+    document.body.classList.remove('modal-open');
+    // Restore scroll position
+    window.scrollTo(0, scrollY);
+  };
+
+  const cards = pillarsData.map((card, index) => (
+    <Card 
+      key={card.title} 
+      card={card} 
+      layout={true}
+      isOpen={openCardIndex === index}
+      onOpen={() => handleOpenCard(index)}
+      onClose={handleCloseCard}
+    />
   ));
 
   return (
@@ -605,7 +739,7 @@ export function AppleCardsCarousel() {
       <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-[#F1F1F1] font-sans">
         Get to know your 9-Pillar System.
       </h2>
-      <Carousel items={cards} />
+      <Carousel items={cards} isModalOpen={openCardIndex !== null} />
     </div>
   );
 }
