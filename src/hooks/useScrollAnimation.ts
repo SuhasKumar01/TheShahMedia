@@ -6,10 +6,11 @@ interface UseScrollAnimationOptions {
   threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
+  disabled?: boolean;
 }
 
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
-  const { threshold = 0.1, rootMargin = "0px", triggerOnce = true } = options;
+  const { threshold = 0.1, rootMargin = "0px", triggerOnce = true, disabled = false } = options;
   const [isInView, setIsInView] = useState(false);
   const [element, setElement] = useState<HTMLElement | null>(null);
 
@@ -18,7 +19,13 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   }, []);
 
   useEffect(() => {
-    if (!element) return;
+    // If disabled, don't set up intersection observer
+    if (!element || disabled) {
+      if (disabled) {
+        setIsInView(true); // Show content immediately when disabled
+      }
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -39,7 +46,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
     return () => {
       observer.unobserve(element);
     };
-  }, [element, threshold, rootMargin, triggerOnce]);
+  }, [element, threshold, rootMargin, triggerOnce, disabled]);
 
   return { ref, isInView };
 }

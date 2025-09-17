@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, X, Diamond, Building2, Camera, Bot, BookOpen, PenTool, Rocket, TrendingUp, Handshake, Sparkles, Zap, Target } from "lucide-react";
 import Image from "next/image";
+import { useScrollTracking } from "@/contexts/ScrollTrackingContext";
+import { disableScrollTrigger, enableScrollTrigger } from "@/lib/animations";
 
 type Card = {
   src: string;
@@ -418,18 +420,12 @@ interface CardProps {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
+  cardRef: React.RefObject<HTMLButtonElement>;
 }
 
-export function Card({ card, isOpen, onOpen, onClose }: CardProps) {
+export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Removed useOutsideClick to prevent modal from closing on backdrop click
-  // Modal now only closes when close button is clicked or Escape key is pressed
-  // useOutsideClick(containerRef, () => {
-  //   if (isOpen) {
-  //     onClose();
-  //   }
-  // });
+  const [cardBounds, setCardBounds] = useState<DOMRect | null>(null);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -452,6 +448,11 @@ export function Card({ card, isOpen, onOpen, onClose }: CardProps) {
     if (isOpen) {
       onClose();
     } else {
+      // Capture card position before opening
+      if (cardRef.current) {
+        const bounds = cardRef.current.getBoundingClientRect();
+        setCardBounds(bounds);
+      }
       onOpen();
     }
   };
@@ -475,7 +476,10 @@ export function Card({ card, isOpen, onOpen, onClose }: CardProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ 
+                duration: 0.4,
+                ease: [0.32, 0.72, 0, 1] // Apple's signature easing
+              }}
               className="bg-black/60 backdrop-blur-xl h-full w-full fixed inset-0"
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
@@ -486,15 +490,39 @@ export function Card({ card, isOpen, onOpen, onClose }: CardProps) {
               onTouchMove={(e) => e.stopPropagation()}
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: 50 }}
-                transition={{ 
-                  duration: 0.4, 
-                  ease: [0.4, 0.0, 0.2, 1],
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30
+                initial={cardBounds ? {
+                  opacity: 1,
+                  scale: cardBounds.width / (window.innerWidth * 0.8),
+                  x: cardBounds.left + cardBounds.width / 2 - window.innerWidth / 2,
+                  y: cardBounds.top + cardBounds.height / 2 - window.innerHeight / 2,
+                  borderRadius: "24px"
+                } : {
+                  opacity: 0,
+                  scale: 0.8,
+                  y: 50
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  x: 0,
+                  y: 0,
+                  borderRadius: "24px"
+                }}
+                exit={cardBounds ? {
+                  opacity: 1,
+                  scale: cardBounds.width / (window.innerWidth * 0.8),
+                  x: cardBounds.left + cardBounds.width / 2 - window.innerWidth / 2,
+                  y: cardBounds.top + cardBounds.height / 2 - window.innerHeight / 2,
+                  borderRadius: "24px"
+                } : {
+                  opacity: 0,
+                  scale: 0.8,
+                  y: 50
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.32, 0.72, 0, 1], // Apple's signature easing
+                  type: "tween"
                 }}
                 ref={containerRef}
                 className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] p-2 sm:p-3 md:p-4 lg:p-2 rounded-2xl sm:rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 max-h-[90vh] overflow-auto pointer-events-auto"
@@ -582,12 +610,20 @@ export function Card({ card, isOpen, onOpen, onClose }: CardProps) {
         )}
       </AnimatePresence>
       <motion.button
+        ref={(el) => {
+          if (cardRef && 'current' in cardRef) {
+            (cardRef as React.MutableRefObject<HTMLButtonElement | null>).current = el;
+          }
+        }}
         onClick={handleCardClick}
         className="rounded-3xl bg-[#36454f] h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
         whileHover={!isOpen ? { scale: 1.02, y: -8 } : {}}
         whileTap={!isOpen ? { scale: 0.98 } : {}}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        style={{ pointerEvents: isOpen ? 'none' : 'auto' }}
+        style={{ 
+          pointerEvents: isOpen ? 'none' : 'auto',
+          opacity: isOpen ? 0 : 1
+        }}
         onMouseEnter={isOpen ? (e) => e.stopPropagation() : undefined}
         onMouseLeave={isOpen ? (e) => e.stopPropagation() : undefined}
       >
@@ -801,61 +837,192 @@ export function Carousel({
 
 export function AppleCardsCarousel() {
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const scrollPositionRef = useRef<number>(0);
+  const { disableScrollTracking, enableScrollTracking } = useScrollTracking();
+
+  // Initialize refs array
+  useEffect(() => {
+    cardRefs.current = cardRefs.current.slice(0, pillarsData.length);
+  }, []);
 
   // Cleanup: restore body scrolling when component unmounts
   useEffect(() => {
     return () => {
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'static';
-      document.body.style.top = 'auto';
-      document.body.style.left = 'auto';
-      document.body.style.right = 'auto';
-      document.body.style.touchAction = 'auto';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.touchAction = '';
       document.body.classList.remove('modal-open');
+      
+      // Restore smooth scrolling behavior
+      document.documentElement.style.scrollBehavior = '';
     };
   }, []);
 
+  // Add scroll event listener to track unexpected scroll changes
+  useEffect(() => {
+    let scrollEventCount = 0;
+    const handleScroll = () => {
+      scrollEventCount++;
+      console.log(`🔄 SCROLL EVENT #${scrollEventCount}:`, {
+        scrollY: window.scrollY,
+        timestamp: new Date().toISOString(),
+        modalOpen: openCardIndex !== null,
+        storedPosition: scrollPositionRef.current
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    console.log('👂 Scroll event listener attached');
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      console.log('🔇 Scroll event listener removed');
+    };
+  }, [openCardIndex]);
+
   const handleOpenCard = (index: number) => {
+    // DISABLE ALL SCROLL TRACKING GLOBALLY
+    console.log('🚫 DISABLING ALL SCROLL TRACKING');
+    disableScrollTracking();
+    disableScrollTrigger();
+    
+    // DISABLE SMOOTH SCROLLING to prevent interference
+    document.documentElement.style.scrollBehavior = 'auto';
+    console.log('🔧 Disabled smooth scroll behavior');
+    
+    // COMPREHENSIVE LOGGING: Modal Open Sequence
+    console.log('🚀 MODAL OPEN START - Card Index:', index);
+    console.log('📍 Initial Scroll Position:', window.scrollY);
+    console.log('📊 Initial Body Styles:', {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      paddingRight: document.body.style.paddingRight
+    });
+    
+    // Store current scroll position BEFORE any changes
+    scrollPositionRef.current = window.scrollY;
+    console.log('💾 Stored Scroll Position in Ref:', scrollPositionRef.current);
+    
     setOpenCardIndex(index);
-    // Store current scroll position
-    const scrollY = window.scrollY;
-    // Disable body scrolling when modal opens with enhanced prevention
+    console.log('🎯 Set Open Card Index:', index);
+    
+    // Apply modal body styles with width preservation to prevent content shift
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    console.log('📏 Calculated Scrollbar Width:', scrollbarWidth);
+    
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
+    document.body.style.top = `-${scrollPositionRef.current}px`;
     document.body.style.left = '0';
     document.body.style.right = '0';
+    document.body.style.width = '100%';
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
     document.body.style.touchAction = 'none';
-    // Hide header when modal is open
     document.body.classList.add('modal-open');
+    
+    console.log('🎨 Applied Body Styles:', {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      paddingRight: document.body.style.paddingRight
+    });
+    console.log('📍 Final Scroll Position after modal open:', window.scrollY);
+    console.log('✅ MODAL OPEN COMPLETE\n');
   };
 
   const handleCloseCard = () => {
+    // COMPREHENSIVE LOGGING: Modal Close Sequence
+    console.log('🔒 MODAL CLOSE START');
+    console.log('📍 Current Scroll Position:', window.scrollY);
+    console.log('💾 Stored Scroll Position in Ref:', scrollPositionRef.current);
+    console.log('📊 Current Body Styles before reset:', {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      paddingRight: document.body.style.paddingRight
+    });
+    
     setOpenCardIndex(null);
-    // Get the scroll position from the body top style
-    const scrollY = parseInt(document.body.style.top || '0') * -1;
-    // Re-enable body scrolling when modal closes
-    document.body.style.overflow = 'unset';
-    document.body.style.position = 'static';
-    document.body.style.top = 'auto';
-    document.body.style.left = 'auto';
-    document.body.style.right = 'auto';
-    document.body.style.touchAction = 'auto';
-    // Show header when modal is closed
+    console.log('🎯 Set Open Card Index to null');
+    
+    // Get the stored scroll position
+    const scrollY = scrollPositionRef.current;
+    console.log('📏 Scroll position to restore:', scrollY);
+    
+    // Log BEFORE resetting styles
+    console.log('⏰ BEFORE style reset - window.scrollY:', window.scrollY);
+    
+    // Reset body styles immediately but smoothly
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.paddingRight = '';
+    document.body.style.touchAction = '';
     document.body.classList.remove('modal-open');
-    // Restore scroll position
+    
+    console.log('🎨 Body styles reset to:', {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      paddingRight: document.body.style.paddingRight
+    });
+    console.log('⏰ AFTER style reset - window.scrollY:', window.scrollY);
+    
+    // Restore scroll position immediately to prevent the page from jumping
+    console.log('🔄 About to restore scroll to:', scrollY);
     window.scrollTo(0, scrollY);
+    console.log('📍 Final scroll position after restore:', window.scrollY);
+    
+    // RE-ENABLE ALL SCROLL TRACKING AFTER A DELAY
+    setTimeout(() => {
+      console.log('✅ RE-ENABLING ALL SCROLL TRACKING');
+      enableScrollTracking();
+      enableScrollTrigger();
+      
+      // RESTORE SMOOTH SCROLLING
+      document.documentElement.style.scrollBehavior = '';
+      console.log('🔧 Restored smooth scroll behavior');
+    }, 100); // Small delay to ensure modal animation completes
+    
+    console.log('✅ MODAL CLOSE COMPLETE\n');
   };
 
-  const cards = pillarsData.map((card, index) => (
-    <Card 
-      key={card.title} 
-      card={card} 
-      isOpen={openCardIndex === index}
-      onOpen={() => handleOpenCard(index)}
-      onClose={handleCloseCard}
-    />
-  ));
+  const cards = pillarsData.map((card, index) => {
+    // Create a proper ref for each card
+    if (!cardRefs.current[index]) {
+      cardRefs.current[index] = null;
+    }
+    
+    const cardRef = {
+      current: cardRefs.current[index]
+    } as React.RefObject<HTMLButtonElement>;
+    
+    return (
+      <Card 
+        key={card.title} 
+        card={card} 
+        isOpen={openCardIndex === index}
+        onOpen={() => handleOpenCard(index)}
+        onClose={handleCloseCard}
+        cardRef={cardRef}
+      />
+    );
+  });
 
   return (
     <div className="w-full h-full py-20">

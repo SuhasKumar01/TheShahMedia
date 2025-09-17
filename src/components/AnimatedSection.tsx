@@ -2,6 +2,7 @@
 
 import { ReactNode, forwardRef } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useScrollTracking } from "@/contexts/ScrollTrackingContext";
 import { cn } from "@/lib/utils";
 
 interface AnimatedSectionProps {
@@ -15,12 +16,20 @@ interface AnimatedSectionProps {
 
 const AnimatedSection = forwardRef<HTMLDivElement, AnimatedSectionProps>(
   ({ children, className, animation = "fadeInUp", delay = 0, duration = 0.8, threshold = 0.1 }, forwardedRef) => {
-    const { ref, isInView } = useScrollAnimation({ threshold });
+    const { isScrollTrackingDisabled } = useScrollTracking();
+    const { ref, isInView } = useScrollAnimation({ 
+      threshold, 
+      disabled: isScrollTrackingDisabled 
+    });
+
+    // If scroll tracking is disabled, show content immediately
+    const shouldAnimate = !isScrollTrackingDisabled;
+    const showContent = !shouldAnimate || isInView;
 
     const animationStyles = {
-      opacity: isInView ? 1 : 0,
-      transform: getTransform(animation, isInView),
-      transition: `opacity ${duration}s ease-out ${delay}s, transform ${duration}s ease-out ${delay}s`,
+      opacity: showContent ? 1 : 0,
+      transform: getTransform(animation, showContent),
+      transition: shouldAnimate ? `opacity ${duration}s ease-out ${delay}s, transform ${duration}s ease-out ${delay}s` : 'none',
     };
 
     return (

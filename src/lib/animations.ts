@@ -6,6 +6,26 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+// Global functions to control ScrollTrigger
+export const disableScrollTrigger = () => {
+  if (typeof window !== "undefined") {
+    console.log('🚫 DISABLING GSAP SCROLLTRIGGER');
+    ScrollTrigger.getAll().forEach(trigger => {
+      trigger.disable();
+    });
+  }
+};
+
+export const enableScrollTrigger = () => {
+  if (typeof window !== "undefined") {
+    console.log('✅ ENABLING GSAP SCROLLTRIGGER');
+    ScrollTrigger.getAll().forEach(trigger => {
+      trigger.enable();
+    });
+    ScrollTrigger.refresh(); // Refresh to recalculate positions
+  }
+};
+
 export interface AnimationConfig {
   trigger?: string | Element
   start?: string

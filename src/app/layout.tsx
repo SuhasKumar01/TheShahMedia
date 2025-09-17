@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ClientLayoutWrapper } from "@/components/ClientLayoutWrapper";
 import { LoadingProvider } from "@/contexts/LoadingContext";
+import { ScrollTrackingProvider } from "@/contexts/ScrollTrackingContext";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -107,12 +108,14 @@ export default function RootLayout({
         </a>
         <ErrorBoundary>
           <LoadingProvider>
-            <Header />
-            <ClientLayoutWrapper>
-              <EnhancedAiChatAssistant />
-              <main id="main-content">{children}</main>
-              <Footer />
-            </ClientLayoutWrapper>
+            <ScrollTrackingProvider>
+              <Header />
+              <ClientLayoutWrapper>
+                <EnhancedAiChatAssistant />
+                <main id="main-content">{children}</main>
+                <Footer />
+              </ClientLayoutWrapper>
+            </ScrollTrackingProvider>
           </LoadingProvider>
         </ErrorBoundary>
       </body>
