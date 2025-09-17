@@ -206,15 +206,22 @@ function PillarContent({ pillar }: { pillar: number }) {
           {/* Key Benefits Card */}
           <motion.div 
             className="group"
+            whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <motion.div 
               className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20 cursor-pointer"
+              whileHover={{ 
+                backgroundColor: "rgba(42, 49, 56, 0.95)",
+                borderColor: "rgba(0, 128, 128, 0.4)",
+                boxShadow: "0 0 40px rgba(0, 128, 128, 0.3)"
+              }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <div className="flex items-center mb-4 sm:mb-6">
                 <motion.div 
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -259,15 +266,22 @@ function PillarContent({ pillar }: { pillar: number }) {
           {/* Implementation Card */}
           <motion.div 
             className="group"
+            whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <motion.div 
               className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20 cursor-pointer"
+              whileHover={{ 
+                backgroundColor: "rgba(42, 49, 56, 0.95)",
+                borderColor: "rgba(0, 123, 255, 0.4)",
+                boxShadow: "0 0 40px rgba(0, 123, 255, 0.3)"
+              }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <div className="flex items-center mb-4 sm:mb-6">
                 <motion.div 
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4"
+                  whileHover={{ scale: 1.1, rotate: -5 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -319,16 +333,23 @@ function PillarContent({ pillar }: { pillar: number }) {
         >
           <motion.div 
             className="inline-flex items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-xl sm:rounded-2xl shadow-lg cursor-pointer"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 0 50px rgba(0, 123, 255, 0.4)",
+              background: "linear-gradient(135deg, #007BFF 0%, #0056b3 50%, #004494 100%)"
+            }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <motion.span 
               className="text-sm sm:text-base md:text-lg font-semibold mr-2 sm:mr-3"
+              whileHover={{ x: -2 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               Ready to implement this pillar?
             </motion.span>
             <motion.div
+              whileHover={{ x: 3, rotate: 15 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
