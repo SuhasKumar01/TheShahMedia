@@ -1,7 +1,0 @@
-.containerScroll {
-  perspective: 1000px;
-}
-
-.cardSticky {
-  backface-visibility: hidden;
-}

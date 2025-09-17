@@ -427,6 +427,9 @@ export function Carousel({
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
+  const [isHovering, setIsHovering] = React.useState(false);
+  const [isDragging, setIsDragging] = React.useState(false);
+  const scrollSpeed = 1; // Fixed scroll speed multiplier
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -443,28 +446,112 @@ export function Carousel({
     }
   };
 
+  // Responsive card scroll amounts based on screen size
+  const getScrollAmount = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width < 768) return 280; // Mobile: 1 card
+      if (width < 1024) return 560; // Tablet: 2 cards  
+      return 840; // Desktop: 3 cards
+    }
+    return 300;
+  };
+
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      carouselRef.current.scrollBy({ 
+        left: -getScrollAmount(), 
+        behavior: "smooth" 
+      });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      carouselRef.current.scrollBy({ 
+        left: getScrollAmount(), 
+        behavior: "smooth" 
+      });
     }
   };
 
+  // Auto-scroll with hover pause functionality
+  useEffect(() => {
+    if (!isHovering && !isDragging && carouselRef.current) {
+      const interval = setInterval(() => {
+        if (carouselRef.current) {
+          const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+          
+          if (scrollLeft >= scrollWidth - clientWidth) {
+            // Reset to beginning with smooth animation
+            carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            carouselRef.current.scrollBy({ 
+              left: getScrollAmount() * scrollSpeed, 
+              behavior: "smooth" 
+            });
+          }
+          checkScrollability();
+        }
+      }, 4000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isHovering, isDragging, scrollSpeed]);
+
   return (
     <div className="relative w-full">
-      <div
-        className="flex w-full overflow-x-scroll overscroll-x-auto py-10 md:py-20 scroll-smooth [scrollbar-width:none]"
+      {/* Glassmorphic Navigation Overlay */}
+      <motion.div 
+        className="absolute top-1/2 left-4 right-4 transform -translate-y-1/2 z-[70] pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovering ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <div className="flex justify-between items-center">
+          <motion.button
+            className="pointer-events-auto relative h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center disabled:opacity-50 shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={scrollLeft}
+            disabled={!canScrollLeft}
+            aria-label="Scroll left"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <ChevronLeft className="h-6 w-6 text-white drop-shadow-sm" />
+          </motion.button>
+
+          <motion.button
+            className="pointer-events-auto relative h-12 w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center disabled:opacity-50 shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={scrollRight}
+            disabled={!canScrollRight}
+            aria-label="Scroll right"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <ChevronRight className="h-6 w-6 text-white drop-shadow-sm" />
+          </motion.button>
+        </div>
+      </motion.div>
+
+      {/* Carousel Container */}
+      <motion.div
+        className="flex w-full overflow-x-scroll overscroll-x-auto py-10 md:py-20 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         ref={carouselRef}
         onScroll={checkScrollability}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        onMouseDown={() => setIsDragging(true)}
+        onMouseUp={() => setIsDragging(false)}
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
-        <div className="absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l" />
+        {/* Gradient Fade Effects */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#36454f] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#36454f] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex flex-row justify-start gap-4 pl-4 max-w-7xl mx-auto">
+        <div className="flex flex-row justify-start gap-6 pl-4 max-w-7xl mx-auto">
           {items.map((item, index) => (
             <motion.div
               initial={{
@@ -482,29 +569,27 @@ export function Carousel({
               }}
               key={"card" + index}
               className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
+              whileHover={{ 
+                scale: 1.05,
+                transition: { type: "spring", stiffness: 400, damping: 25 }
+              }}
             >
               {item}
             </motion.div>
           ))}
         </div>
-      </div>
-      <div className="flex justify-end gap-2 mr-10">
-        <button
-          className="relative z-40 h-10 w-10 rounded-full bg-[#36454f] flex items-center justify-center disabled:opacity-50"
-          onClick={scrollLeft}
-          disabled={!canScrollLeft}
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="h-6 w-6 text-[#F1F1F1]" />
-        </button>
-        <button
-          className="relative z-40 h-10 w-10 rounded-full bg-[#36454f] flex items-center justify-center disabled:opacity-50"
-          onClick={scrollRight}
-          disabled={!canScrollRight}
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="h-6 w-6 text-[#F1F1F1]" />
-        </button>
+      </motion.div>
+
+      {/* Mobile Horizontal Scroll Indicator */}
+      <div className="block md:hidden mt-4 px-4">
+        <div className="flex items-center justify-center space-x-2">
+          {items.map((_, index) => (
+            <div
+              key={index}
+              className="w-2 h-2 rounded-full bg-white/30 transition-all duration-300"
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

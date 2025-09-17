@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { HTMLMotionProps, motion } from "framer-motion"
+import { HTMLMotionProps, motion } from "motion/react"
+
 import { cn } from "@/lib/utils"
 
 interface CardStickyProps extends HTMLMotionProps<"div"> {
@@ -18,10 +19,7 @@ const ContainerScroll = React.forwardRef<
     <div
       ref={ref}
       className={cn("relative w-full", className)}
-      style={{
-        perspective: "1000px",
-        ...props.style,
-      }}
+      style={{ perspective: "1000px", ...props.style }}
       {...props}
     >
       {children}
@@ -50,6 +48,9 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
       <motion.div
         ref={ref}
         layout="position"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         style={{
           top: y,
           z,
@@ -64,6 +65,7 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
     )
   }
 )
+
 CardSticky.displayName = "CardSticky"
 
 export { ContainerScroll, CardSticky }

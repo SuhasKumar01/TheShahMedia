@@ -197,6 +197,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--shadow-premium-soft);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
 }
@@ -226,6 +227,7 @@
   border: 1px solid var(--glass-border);
   color: var(--color-canvas-white);
   background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-backdrop);
   backdrop-filter: var(--glass-backdrop);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--glass-shadow);
@@ -406,8 +408,8 @@ html {
 /* Premium Glass Morphism Card System */
 .glass-card {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
+  backdrop-filter: var(--glass-backdrop);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   box-shadow: var(--glass-shadow);
@@ -423,8 +425,8 @@ html {
 
 .glass-card-subtle {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   box-shadow: var(--shadow-premium-soft);
@@ -432,8 +434,8 @@ html {
 
 .glass-navigation {
   background: rgba(54, 69, 79, 0.8);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -1070,7 +1072,13 @@ html {
 
 /* Improved focus indicators */
 .focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007BFF] focus-visible:ring-offset-2;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #007BFF, 0 0 0 4px rgba(0, 123, 255, 0.3);
 }
 
 /* ===== FLIP CARD ANIMATIONS ===== */

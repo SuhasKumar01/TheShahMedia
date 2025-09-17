@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en">
       <head>
         {/* Microsoft Clarity tracking code */}
         <script
@@ -96,7 +96,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
       <body
-        className={`${inter.variable} ${montserrat.variable} antialiased bg-[#F1F1F1] text-[#111111] overflow-x-hidden`}
+        className={`${inter.variable} ${montserrat.variable} antialiased bg-[#F1F1F1] text-[#111111]`}
       >
         {/* Skip to content for keyboard users */}
         <a
@@ -110,7 +110,7 @@ export default function RootLayout({
             <Header />
             <ClientLayoutWrapper>
               <EnhancedAiChatAssistant />
-              <main id="main-content" className="overflow-x-hidden">{children}</main>
+              <main id="main-content">{children}</main>
               <Footer />
             </ClientLayoutWrapper>
           </LoadingProvider>
