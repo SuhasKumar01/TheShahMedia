@@ -1260,6 +1260,32 @@ html {
   background: rgba(255, 255, 255, 0.5);
 }
 
+/* Modal scroll container styles */
+.modal-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #b9b2aa transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scroll-container::-webkit-scrollbar-thumb {
+  background: #b9b2aa;
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+.modal-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #a8988f;
+  opacity: 1;
+}
+
 .brand-icons {
   display: flex;
   flex-direction: row;

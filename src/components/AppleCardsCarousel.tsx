@@ -304,13 +304,12 @@ export function BlurImage({
 
 interface CardProps {
   card: Card;
-  layout?: boolean;
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
 }
 
-export function Card({ card, layout = false, isOpen, onOpen, onClose }: CardProps) {
+export function Card({ card, isOpen, onOpen, onClose }: CardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Removed useOutsideClick to prevent modal from closing on backdrop click
@@ -371,7 +370,7 @@ export function Card({ card, layout = false, isOpen, onOpen, onClose }: CardProp
               onTouchMove={(e) => e.stopPropagation()}
             />
             <div 
-              className="h-full w-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 overflow-auto"
+              className="h-full w-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 overflow-auto pointer-events-auto"
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
             >
@@ -387,7 +386,7 @@ export function Card({ card, layout = false, isOpen, onOpen, onClose }: CardProp
                   damping: 30
                 }}
                 ref={containerRef}
-                className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] p-2 sm:p-3 md:p-4 lg:p-2 rounded-2xl sm:rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 max-h-[90vh] overflow-auto"
+                className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] p-2 sm:p-3 md:p-4 lg:p-2 rounded-2xl sm:rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 max-h-[90vh] overflow-auto pointer-events-auto"
                 onMouseEnter={(e) => e.stopPropagation()}
                 onMouseLeave={(e) => e.stopPropagation()}
                 onMouseMove={(e) => e.stopPropagation()}
@@ -448,9 +447,23 @@ export function Card({ card, layout = false, isOpen, onOpen, onClose }: CardProp
                 </motion.p>
               </div>
               
-              {/* Content with scroll */}
-              <div className="max-h-[60vh] sm:max-h-[65vh] md:max-h-[70vh] lg:max-h-[75vh] overflow-y-auto scrollbar-thin scrollbar-thumb-[#b9b2aa] dark:scrollbar-thumb-[#b9b2aa] scrollbar-track-transparent">
-                {card.content}
+              {/* Enhanced Content with Premium Scroll */}
+              <div 
+                className="modal-scroll-container max-h-[60vh] sm:max-h-[65vh] md:max-h-[70vh] lg:max-h-[75vh] overflow-y-auto overflow-x-hidden scroll-smooth pr-2 sm:pr-3 pointer-events-auto"
+              >
+                {/* Scroll fade indicators */}
+                <div className="relative">
+                  {/* Top fade indicator */}
+                  <div className="sticky top-0 h-4 bg-gradient-to-b from-[#36454f]/95 to-transparent z-10 pointer-events-none"></div>
+                  
+                  {/* Content */}
+                  <div className="px-2 sm:px-3 py-2">
+                    {card.content}
+                  </div>
+                  
+                  {/* Bottom fade indicator */}
+                  <div className="sticky bottom-0 h-4 bg-gradient-to-t from-[#36454f]/95 to-transparent z-10 pointer-events-none"></div>
+                </div>
               </div>
             </motion.div>
             </div>
@@ -727,7 +740,6 @@ export function AppleCardsCarousel() {
     <Card 
       key={card.title} 
       card={card} 
-      layout={true}
       isOpen={openCardIndex === index}
       onOpen={() => handleOpenCard(index)}
       onClose={handleCloseCard}
