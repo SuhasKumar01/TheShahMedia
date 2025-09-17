@@ -426,8 +426,8 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ 
-                duration: 0.4,
-                ease: [0.32, 0.72, 0, 1] // Apple's signature easing
+                duration: 0.3,
+                ease: "easeOut"
               }}
               className="bg-black/60 backdrop-blur-xl h-full w-full fixed inset-0"
               onWheel={(e) => e.stopPropagation()}
@@ -439,6 +439,7 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
               onTouchMove={(e) => e.stopPropagation()}
             >
               <motion.div
+                layoutId={`card-${card.title}`}
                 initial={{
                   opacity: 0,
                   scale: 0.95,
@@ -454,8 +455,8 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
                   scale: 0.95,
                   y: 20
                 }}
-                transition={{
-                  duration: 0.3,
+                transition={{ 
+                  duration: 0.3, 
                   ease: "easeOut"
                 }}
                 ref={containerRef}
@@ -503,6 +504,7 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
               {/* Header section with premium gradient */}
               <div className="px-4 sm:px-6 md:px-8 lg:px-12 pb-4 sm:pb-6">
                 <motion.p
+                  layoutId={`category-${card.title}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
@@ -511,6 +513,7 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
                   {card.category}
                 </motion.p>
                 <motion.p
+                  layoutId={`title-${card.title}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -544,6 +547,7 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
         )}
       </AnimatePresence>
       <motion.button
+        layoutId={`card-${card.title}`}
         ref={(el) => {
           if (cardRef && 'current' in cardRef) {
             (cardRef as React.MutableRefObject<HTMLButtonElement | null>).current = el;
@@ -561,11 +565,13 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
+            layoutId={`category-${card.title}`}
             className="text-white text-sm md:text-base font-medium font-sans text-left"
           >
             {card.category}
           </motion.p>
           <motion.p
+            layoutId={`title-${card.title}`}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
           >
             {card.title}
