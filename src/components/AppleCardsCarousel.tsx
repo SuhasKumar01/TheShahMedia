@@ -206,34 +206,22 @@ function PillarContent({ pillar }: { pillar: number }) {
           {/* Key Benefits Card */}
           <motion.div 
             className="group"
-            whileHover={{ scale: 1.02, y: -5 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <motion.div 
               className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20 cursor-pointer"
-              whileHover={{
-                backgroundColor: "rgba(42, 49, 56, 0.95)",
-                borderColor: "rgba(0, 128, 128, 0.4)",
-                boxShadow: "0 25px 50px -12px rgba(0, 128, 128, 0.25)"
-              }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <div className="flex items-center mb-4 sm:mb-6">
                 <motion.div 
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4"
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: 5,
-                    background: "linear-gradient(to right, #00A0A0, #00C0C0)"
-                  }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </motion.div>
                 <motion.h5 
                   className="text-lg sm:text-xl font-bold text-[#F1F1F1]"
-                  whileHover={{ color: "#00A0A0" }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   Key Benefits
                 </motion.h5>
@@ -250,22 +238,15 @@ function PillarContent({ pillar }: { pillar: number }) {
                     className="flex items-start"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ x: 5 }}
+                    transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
                   >
                     <motion.div 
                       className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0"
-                      whileHover={{ 
-                        scale: 1.5, 
-                        backgroundColor: "#00A0A0",
-                        boxShadow: "0 0 10px rgba(0, 160, 160, 0.6)"
-                      }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                     />
                     <motion.span 
                       className="text-sm sm:text-base text-[#b9b2aa] font-medium"
-                      whileHover={{ color: "#F1F1F1" }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                     >
                       {benefit}
                     </motion.span>
@@ -278,34 +259,22 @@ function PillarContent({ pillar }: { pillar: number }) {
           {/* Implementation Card */}
           <motion.div 
             className="group"
-            whileHover={{ scale: 1.02, y: -5 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <motion.div 
               className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20 cursor-pointer"
-              whileHover={{
-                backgroundColor: "rgba(42, 49, 56, 0.95)",
-                borderColor: "rgba(0, 123, 255, 0.4)",
-                boxShadow: "0 25px 50px -12px rgba(0, 123, 255, 0.25)"
-              }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <div className="flex items-center mb-4 sm:mb-6">
                 <motion.div 
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4"
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: -5,
-                    background: "linear-gradient(to right, #0056b3, #007BFF)"
-                  }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </motion.div>
                 <motion.h5 
                   className="text-lg sm:text-xl font-bold text-[#F1F1F1]"
-                  whileHover={{ color: "#007BFF" }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   Implementation
                 </motion.h5>
@@ -322,22 +291,15 @@ function PillarContent({ pillar }: { pillar: number }) {
                     className="flex items-start"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ x: 5 }}
+                    transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
                   >
                     <motion.div 
                       className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0"
-                      whileHover={{ 
-                        scale: 1.5, 
-                        backgroundColor: "#0080FF",
-                        boxShadow: "0 0 10px rgba(0, 123, 255, 0.6)"
-                      }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                     />
                     <motion.span 
                       className="text-sm sm:text-base text-[#b9b2aa] font-medium"
-                      whileHover={{ color: "#F1F1F1" }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                     >
                       {step}
                     </motion.span>
@@ -357,24 +319,17 @@ function PillarContent({ pillar }: { pillar: number }) {
         >
           <motion.div 
             className="inline-flex items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-xl sm:rounded-2xl shadow-lg cursor-pointer"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 20px 40px -12px rgba(0, 123, 255, 0.4)",
-              background: "linear-gradient(to right, #0056b3, #007BFF, #0080FF)"
-            }}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <motion.span 
               className="text-sm sm:text-base md:text-lg font-semibold mr-2 sm:mr-3"
-              whileHover={{ letterSpacing: "0.02em" }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               Ready to implement this pillar?
             </motion.span>
             <motion.div
-              whileHover={{ rotate: 15, scale: 1.2 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
             </motion.div>
@@ -425,7 +380,6 @@ interface CardProps {
 
 export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [cardBounds, setCardBounds] = useState<DOMRect | null>(null);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -448,11 +402,6 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
     if (isOpen) {
       onClose();
     } else {
-      // Capture card position before opening
-      if (cardRef.current) {
-        const bounds = cardRef.current.getBoundingClientRect();
-        setCardBounds(bounds);
-      }
       onOpen();
     }
   };
@@ -490,39 +439,24 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
               onTouchMove={(e) => e.stopPropagation()}
             >
               <motion.div
-                initial={cardBounds ? {
-                  opacity: 1,
-                  scale: cardBounds.width / (window.innerWidth * 0.8),
-                  x: cardBounds.left + cardBounds.width / 2 - window.innerWidth / 2,
-                  y: cardBounds.top + cardBounds.height / 2 - window.innerHeight / 2,
-                  borderRadius: "24px"
-                } : {
+                initial={{
                   opacity: 0,
-                  scale: 0.8,
-                  y: 50
+                  scale: 0.95,
+                  y: 20
                 }}
                 animate={{
                   opacity: 1,
                   scale: 1,
-                  x: 0,
-                  y: 0,
-                  borderRadius: "24px"
+                  y: 0
                 }}
-                exit={cardBounds ? {
-                  opacity: 1,
-                  scale: cardBounds.width / (window.innerWidth * 0.8),
-                  x: cardBounds.left + cardBounds.width / 2 - window.innerWidth / 2,
-                  y: cardBounds.top + cardBounds.height / 2 - window.innerHeight / 2,
-                  borderRadius: "24px"
-                } : {
+                exit={{
                   opacity: 0,
-                  scale: 0.8,
-                  y: 50
+                  scale: 0.95,
+                  y: 20
                 }}
                 transition={{
-                  duration: 0.5,
-                  ease: [0.32, 0.72, 0, 1], // Apple's signature easing
-                  type: "tween"
+                  duration: 0.3,
+                  ease: "easeOut"
                 }}
                 ref={containerRef}
                 className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] p-2 sm:p-3 md:p-4 lg:p-2 rounded-2xl sm:rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 max-h-[90vh] overflow-auto pointer-events-auto"
@@ -617,15 +551,12 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
         }}
         onClick={handleCardClick}
         className="rounded-3xl bg-[#36454f] h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
-        whileHover={!isOpen ? { scale: 1.02, y: -8 } : {}}
         whileTap={!isOpen ? { scale: 0.98 } : {}}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         style={{ 
           pointerEvents: isOpen ? 'none' : 'auto',
           opacity: isOpen ? 0 : 1
         }}
-        onMouseEnter={isOpen ? (e) => e.stopPropagation() : undefined}
-        onMouseLeave={isOpen ? (e) => e.stopPropagation() : undefined}
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -783,8 +714,7 @@ export function Carousel({
         onMouseLeave={!isModalOpen ? () => setIsHovering(false) : undefined}
         onMouseDown={!isModalOpen ? () => setIsDragging(true) : undefined}
         onMouseUp={!isModalOpen ? () => setIsDragging(false) : undefined}
-        whileHover={{}}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
       >
         {/* Gradient Fade Effects */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#36454f] to-transparent z-10 pointer-events-none" />
@@ -808,10 +738,7 @@ export function Carousel({
               }}
               key={"card" + index}
               className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
-              whileHover={!isModalOpen ? { 
-                scale: 1.05,
-                transition: { type: "spring", stiffness: 400, damping: 25 }
-              } : {}}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               style={{ pointerEvents: isModalOpen ? 'none' : 'auto' }}
             >
               {item}
@@ -997,7 +924,7 @@ export function AppleCardsCarousel() {
       // RESTORE SMOOTH SCROLLING
       document.documentElement.style.scrollBehavior = '';
       console.log('🔧 Restored smooth scroll behavior');
-    }, 100); // Small delay to ensure modal animation completes
+    }, 650); // Wait for exit animation to complete (500ms) + buffer (150ms)
     
     console.log('✅ MODAL CLOSE COMPLETE\n');
   };
