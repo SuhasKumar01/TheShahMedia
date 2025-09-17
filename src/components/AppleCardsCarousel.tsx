@@ -201,72 +201,183 @@ function PillarContent({ pillar }: { pillar: number }) {
         
         {/* Benefits & Implementation Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          <div className="group">
-            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20">
+          {/* Key Benefits Card */}
+          <motion.div 
+            className="group"
+            whileHover={{ scale: 1.02, y: -5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <motion.div 
+              className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20 cursor-pointer"
+              whileHover={{
+                backgroundColor: "rgba(42, 49, 56, 0.95)",
+                borderColor: "rgba(0, 128, 128, 0.4)",
+                boxShadow: "0 25px 50px -12px rgba(0, 128, 128, 0.25)"
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
               <div className="flex items-center mb-4 sm:mb-6">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                <motion.div 
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#008080] to-[#00A0A0] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4"
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: 5,
+                    background: "linear-gradient(to right, #00A0A0, #00C0C0)"
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
                   <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <h5 className="text-lg sm:text-xl font-bold text-[#F1F1F1]">Key Benefits</h5>
+                </motion.div>
+                <motion.h5 
+                  className="text-lg sm:text-xl font-bold text-[#F1F1F1]"
+                  whileHover={{ color: "#00A0A0" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Key Benefits
+                </motion.h5>
               </div>
               <ul className="space-y-3 sm:space-y-4">
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Strategic market positioning</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Increased conversion rates</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Premium pricing capability</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Streamlined operations</span>
-                </li>
+                {[
+                  "Strategic market positioning",
+                  "Increased conversion rates", 
+                  "Premium pricing capability",
+                  "Streamlined operations"
+                ].map((benefit, index) => (
+                  <motion.li 
+                    key={index}
+                    className="flex items-start"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ x: 5 }}
+                  >
+                    <motion.div 
+                      className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#008080] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0"
+                      whileHover={{ 
+                        scale: 1.5, 
+                        backgroundColor: "#00A0A0",
+                        boxShadow: "0 0 10px rgba(0, 160, 160, 0.6)"
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    />
+                    <motion.span 
+                      className="text-sm sm:text-base text-[#b9b2aa] font-medium"
+                      whileHover={{ color: "#F1F1F1" }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {benefit}
+                    </motion.span>
+                  </motion.li>
+                ))}
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           
-          <div className="group">
-            <div className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20">
+          {/* Implementation Card */}
+          <motion.div 
+            className="group"
+            whileHover={{ scale: 1.02, y: -5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <motion.div 
+              className="bg-[#2a3138]/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#b9b2aa]/20 cursor-pointer"
+              whileHover={{
+                backgroundColor: "rgba(42, 49, 56, 0.95)",
+                borderColor: "rgba(0, 123, 255, 0.4)",
+                boxShadow: "0 25px 50px -12px rgba(0, 123, 255, 0.25)"
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
               <div className="flex items-center mb-4 sm:mb-6">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                <motion.div 
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-[#007BFF] to-[#0056b3] rounded-lg sm:rounded-xl flex items-center justify-center mr-3 sm:mr-4"
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: -5,
+                    background: "linear-gradient(to right, #0056b3, #007BFF)"
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
                   <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <h5 className="text-lg sm:text-xl font-bold text-[#F1F1F1]">Implementation</h5>
+                </motion.div>
+                <motion.h5 
+                  className="text-lg sm:text-xl font-bold text-[#F1F1F1]"
+                  whileHover={{ color: "#007BFF" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Implementation
+                </motion.h5>
               </div>
               <ul className="space-y-3 sm:space-y-4">
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 1-2: Discovery & Strategy</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 3-4: Development</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 5-6: Testing & Launch</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-[#b9b2aa] font-medium">Week 7-8: Optimization</span>
-                </li>
+                {[
+                  "Week 1-2: Discovery & Strategy",
+                  "Week 3-4: Development",
+                  "Week 5-6: Testing & Launch", 
+                  "Week 7-8: Optimization"
+                ].map((step, index) => (
+                  <motion.li 
+                    key={index}
+                    className="flex items-start"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ x: 5 }}
+                  >
+                    <motion.div 
+                      className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#007BFF] rounded-full mt-2 sm:mt-3 mr-3 sm:mr-4 flex-shrink-0"
+                      whileHover={{ 
+                        scale: 1.5, 
+                        backgroundColor: "#0080FF",
+                        boxShadow: "0 0 10px rgba(0, 123, 255, 0.6)"
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    />
+                    <motion.span 
+                      className="text-sm sm:text-base text-[#b9b2aa] font-medium"
+                      whileHover={{ color: "#F1F1F1" }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {step}
+                    </motion.span>
+                  </motion.li>
+                ))}
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
         
         {/* Call to Action */}
-        <div className="mt-8 sm:mt-10 md:mt-12 text-center">
-          <div className="inline-flex items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-xl sm:rounded-2xl shadow-lg cursor-pointer">
-            <span className="text-sm sm:text-base md:text-lg font-semibold mr-2 sm:mr-3">Ready to implement this pillar?</span>
-            <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
-          </div>
-        </div>
+        <motion.div 
+          className="mt-8 sm:mt-10 md:mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          <motion.div 
+            className="inline-flex items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#007BFF] to-[#0056b3] text-white rounded-xl sm:rounded-2xl shadow-lg cursor-pointer"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 20px 40px -12px rgba(0, 123, 255, 0.4)",
+              background: "linear-gradient(to right, #0056b3, #007BFF, #0080FF)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <motion.span 
+              className="text-sm sm:text-base md:text-lg font-semibold mr-2 sm:mr-3"
+              whileHover={{ letterSpacing: "0.02em" }}
+              transition={{ duration: 0.2 }}
+            >
+              Ready to implement this pillar?
+            </motion.span>
+            <motion.div
+              whileHover={{ rotate: 15, scale: 1.2 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );
