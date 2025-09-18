@@ -23,7 +23,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "The Shah Media — Local Growth Engine",
   description: "The Local Growth Engine for Shivamogga's Master Craftsmen. Transforming traditional businesses with AI-enhanced digital systems for Interior Designers, Architects, and Premium Contractors.",
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://theshahmedia.com"),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
@@ -38,12 +38,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Shah Media — Local Growth Engine",
     description: "The Local Growth Engine for Shivamogga's Master Craftsmen. AI-enhanced digital systems for premium growth.",
-    url: "/",
+    url: "https://theshahmedia.com/",
     siteName: "The Shah Media",
     type: "website",
     images: [
       {
-        url: "/logo.png",
+        url: "https://theshahmedia.com/logo.png",
         width: 1200,
         height: 630,
         alt: "The Shah Media - Local Growth Engine"
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Shah Media — Local Growth Engine",
     description: "The Local Growth Engine for Shivamogga's Master Craftsmen. AI-enhanced digital systems for premium growth.",
-    images: ["/logo.png"]
+    images: ["https://theshahmedia.com/logo.png"]
   },
   robots: {
     index: true,

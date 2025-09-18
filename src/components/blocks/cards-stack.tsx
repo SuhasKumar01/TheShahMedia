@@ -18,8 +18,8 @@ const ContainerScroll = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("relative w-full", className)}
-      style={{ perspective: "1000px", ...props.style }}
+      className={cn("relative w-full perspective-1000", className)}
+      style={props.style}
       {...props}
     >
       {children}
@@ -54,10 +54,9 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
         style={{
           top: y,
           z,
-          backfaceVisibility: "hidden",
           ...style,
         }}
-        className={cn("sticky", className)}
+        className={cn("sticky backface-hidden", className)}
         {...props}
       >
         {children}

@@ -432,7 +432,7 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
       <AnimatePresence>
         {isOpen && (
           <div 
-            className="fixed inset-0 h-screen z-50 overflow-hidden"
+            className="fixed inset-0 h-screen modal-overlay overflow-hidden"
             onWheel={(e) => {
               // Prevent wheel events from propagating to background
               e.stopPropagation();
@@ -450,12 +450,12 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
                 duration: 0.3,
                 ease: "easeOut"
               }}
-              className="bg-black/60 backdrop-blur-xl h-full w-full fixed inset-0"
+              className="h-full w-full fixed inset-0 modal-backdrop"
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
             />
             <div 
-              className="h-full w-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 overflow-auto pointer-events-auto"
+              className="h-full w-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 overflow-auto pointer-events-auto relative modal-content-container"
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
             >
@@ -481,7 +481,7 @@ export function Card({ card, isOpen, onOpen, onClose, cardRef }: CardProps) {
                   ease: "easeOut"
                 }}
                 ref={containerRef}
-                className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl bg-[#36454f]/95 backdrop-blur-2xl h-fit z-[60] p-2 sm:p-3 md:p-4 lg:p-2 rounded-2xl sm:rounded-3xl font-sans relative shadow-2xl border border-[#b9b2aa]/20 max-h-[90vh] overflow-auto pointer-events-auto"
+                className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl h-fit p-2 sm:p-3 md:p-4 lg:p-2 rounded-2xl sm:rounded-3xl font-sans relative shadow-2xl max-h-[90vh] overflow-auto pointer-events-auto modal-content"
                 onMouseEnter={(e) => e.stopPropagation()}
                 onMouseLeave={(e) => e.stopPropagation()}
                 onMouseMove={(e) => e.stopPropagation()}
