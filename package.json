@@ -7,12 +7,7 @@
     "build": "next build",
     "build:analyze": "cross-env ANALYZE=true next build",
     "start": "next start",
-    "lint": "eslint",
-    "prepare": "husky",
-    "storybook-init": "npx storybook@latest init",
-    "test": "jest --passWithNoTests",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",

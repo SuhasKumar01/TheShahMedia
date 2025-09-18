@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Montserrat } from "next/font/google";
 import EnhancedAiChatAssistant from "@/components/EnhancedAiChatAssistant";
 import Footer from "@/components/Footer";
@@ -31,7 +32,8 @@ export const metadata: Metadata = {
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon-512.png", sizes: "512x512", type: "image/png" }
     ],
-    shortcut: "/favicon.ico"
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png"
   },
   openGraph: {
     title: "The Shah Media — Local Growth Engine",
@@ -75,20 +77,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Microsoft Clarity tracking code */}
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "tbpad3rtgr");
-            `,
-          }}
-        />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" type="image/png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -99,6 +87,20 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${montserrat.variable} antialiased bg-[#F1F1F1] text-[#111111]`}
       >
+        {/* Microsoft Clarity tracking script - Safe implementation */}
+        <Script
+          id="microsoft-clarity"
+          strategy="afterInteractive"
+        >
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "tbpad3rtgr");
+          `}
+        </Script>
+        
         {/* Skip to content for keyboard users */}
         <a
           href="#main-content"
