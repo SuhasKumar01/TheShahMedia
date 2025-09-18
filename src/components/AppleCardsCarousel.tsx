@@ -432,20 +432,19 @@ export function Card({ card, isOpen, onOpen, onClose }: CardProps) {
   // });
 
   useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape" && isOpen) {
-        onClose();
-      }
-    }
-
     if (isOpen) {
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
+      const onKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+          onClose();
+        }
+      };
+      window.addEventListener("keydown", onKeyDown);
+      return () => {
+        document.body.style.overflow = "auto";
+        window.removeEventListener("keydown", onKeyDown);
+      };
     }
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen, onClose]);
 
   const handleCardClick = () => {
@@ -649,13 +648,13 @@ export function Carousel({
 
   // Responsive card scroll amounts based on screen size
   const getScrollAmount = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const width = window.innerWidth;
       if (width < 768) return 280; // Mobile: 1 card
-      if (width < 1024) return 560; // Tablet: 2 cards  
+      if (width < 1024) return 560; // Tablet: 2 cards
       return 840; // Desktop: 3 cards
     }
-    return 300;
+    return 300; // Default for server-side rendering
   };
 
   const scrollLeft = () => {
@@ -802,8 +801,38 @@ export function Carousel({
 export function AppleCardsCarousel() {
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
 
-  // Cleanup: restore body scrolling when component unmounts
   useEffect(() => {
+    const handleOpenCard = (index: number) => {
+      setOpenCardIndex(index);
+      const scrollY = window.scrollY;
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.touchAction = 'none';
+      document.body.classList.add('modal-open');
+    };
+
+    const handleCloseCard = () => {
+      setOpenCardIndex(null);
+      const scrollY = parseInt(document.body.style.top || '0') * -1;
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'static';
+      document.body.style.top = 'auto';
+      document.body.style.left = 'auto';
+      document.body.style.right = 'auto';
+      document.body.style.touchAction = 'auto';
+      document.body.classList.remove('modal-open');
+      window.scrollTo(0, scrollY);
+    };
+
+    if (openCardIndex !== null) {
+      handleOpenCard(openCardIndex);
+    } else {
+      handleCloseCard();
+    }
+
     return () => {
       document.body.style.overflow = 'unset';
       document.body.style.position = 'static';
@@ -813,38 +842,14 @@ export function AppleCardsCarousel() {
       document.body.style.touchAction = 'auto';
       document.body.classList.remove('modal-open');
     };
-  }, []);
+  }, [openCardIndex]);
 
   const handleOpenCard = (index: number) => {
     setOpenCardIndex(index);
-    // Store current scroll position
-    const scrollY = window.scrollY;
-    // Disable body scrolling when modal opens with enhanced prevention
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.touchAction = 'none';
-    // Hide header when modal is open
-    document.body.classList.add('modal-open');
   };
 
   const handleCloseCard = () => {
     setOpenCardIndex(null);
-    // Get the scroll position from the body top style
-    const scrollY = parseInt(document.body.style.top || '0') * -1;
-    // Re-enable body scrolling when modal closes
-    document.body.style.overflow = 'unset';
-    document.body.style.position = 'static';
-    document.body.style.top = 'auto';
-    document.body.style.left = 'auto';
-    document.body.style.right = 'auto';
-    document.body.style.touchAction = 'auto';
-    // Show header when modal is closed
-    document.body.classList.remove('modal-open');
-    // Restore scroll position
-    window.scrollTo(0, scrollY);
   };
 
   const cards = pillarsData.map((card, index) => (

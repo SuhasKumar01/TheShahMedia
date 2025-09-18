@@ -10,7 +10,7 @@
     "lint": "eslint",
     "prepare": "husky",
     "storybook-init": "npx storybook@latest init",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

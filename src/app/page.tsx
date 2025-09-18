@@ -3,14 +3,17 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import CardsStackSection from "@/components/CardsStackSection";
-import { ThreeDPricingCards } from "@/components/ThreeDPricingCards";
-import { ClientShowcase } from "@/components/ClientShowcase";
-import EnhancedHero from "@/components/EnhancedHero";
+import dynamic from "next/dynamic";
 import AnimatedSection from "@/components/AnimatedSection";
-import { AppleCardsCarousel } from "@/components/AppleCardsCarousel";
-import { AiConcierge } from "@/components/interactive/AiConcierge";
 import { motion } from "framer-motion";
+
+const CardsStackSection = dynamic(() => import("@/components/CardsStackSection"), { ssr: false });
+const ThreeDPricingCards = dynamic(() => import("@/components/ThreeDPricingCards").then(mod => mod.ThreeDPricingCards), { ssr: false });
+const ClientShowcase = dynamic(() => import("@/components/ClientShowcase").then(mod => mod.ClientShowcase), { ssr: false });
+const EnhancedHero = dynamic(() => import("@/components/EnhancedHero"), { ssr: false });
+const AppleCardsCarousel = dynamic(() => import("@/components/AppleCardsCarousel").then(mod => mod.AppleCardsCarousel), { ssr: false });
+const AiConcierge = dynamic(() => import("@/components/interactive/AiConcierge").then(mod => mod.AiConcierge), { ssr: false });
+
 
 export default function Home() {
   const [selectedInvestment, setSelectedInvestment] = useState<string>("growth");
